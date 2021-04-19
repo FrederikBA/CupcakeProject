@@ -19,6 +19,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
+          <factory-entry name="CupcakeProject" />
           <factory-entry name="bmi" />
         </datasource-mapping>
         <naming-strategy-map />

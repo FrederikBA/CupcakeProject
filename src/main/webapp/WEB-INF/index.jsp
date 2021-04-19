@@ -14,25 +14,30 @@
 
     <jsp:body>
 
-        <div>
-            <h2>Our Cool Site</h2>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-11">
+                <h1 class="">Velkommen ombord</h1>
 
-            <div style="margin-top: 3em;margin-bottom: 3em;">
-                Main page for this 2. semester start project used at cphbusiness.dk
-            </div>
+                <h2>Øens bedste cupcakes. Vælg og bestil her:</h2>
 
-            <c:if test="${sessionScope.role == 'employee' }">
+                <div style="margin-top: 3em;margin-bottom: 3em;">
+                    Main page for this 2. semester start project used at cphbusiness.dk
+                </div>
+
+                <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
                     since your are logged in as an employee</p>
-                 <p><a href="fc/employeepage">Employee Page</a>
-             </c:if>
+                <p><a href="fc/employeepage">Employee Page</a>
+                    </c:if>
 
-             <c:if test="${sessionScope.role == 'customer' }">
+                    <c:if test="${sessionScope.role == 'customer' }">
                 <p style="font-size: larger">This is what you can do, since your
                     are logged in as a customer</p>
                 <p><a href="fc/customerpage">Customer Page</a>
-            </c:if>
-
+                    </c:if>
+            </div>
+            <div class="col"></div>
         </div>
 
     </jsp:body>

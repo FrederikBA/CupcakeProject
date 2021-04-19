@@ -1,9 +1,35 @@
-/*
-    CSS styles for the whole website
-    The file is included in the genericpage.tag template
- */
+.responsive {
+    width: 100%;
+    height: auto;
 
-#topmenu_login_dialogue
-{
-    font-size: smaller;
+}
+
+.right {
+    float: right;
+}
+
+.bg-lightgrey {
+    background-color: #F0F0F0;
+}
+
+.header-link {
+    color: black;
+    opacity: 65%;
+    text-decoration-line: none;
+}
+
+.header-link:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.login-system {
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.banner-container {
+    min-height:300px;
 }
