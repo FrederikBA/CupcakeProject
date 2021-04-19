@@ -40,5 +40,43 @@
             <div class="col"></div>
         </div>
 
+        <div class="row">
+            <form>
+
+                <div class="col">
+                    <div>
+                        <label for="bottom">Vælg bund</label>
+                        <select name="sport" id="bottom">
+                            <option>chokolade</option>
+                            <option>vanilje</option>
+                            <!-- <c:forEach var="sport" items="${applicationScope.sportList}">
+                    <option value="${sport.sportId}">${sport.sportName}</option>
+                </c:forEach> -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div>
+                        <label for="topping">Vælg Top</label>
+                        <select name="sport" id="topping">
+                            <option>pistache</option>
+                            <option>valnød</option>
+                            <!-- <c:forEach var="sport" items="${applicationScope.sportList}">
+                    <option value="${sport.sportId}">${sport.sportName}</option>
+                </c:forEach> -->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <label for="fname">First name: </label>
+                    <input type="text" id="fname" name="fname"><br><br>
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+        </div>
+
+
     </jsp:body>
 </t:genericpage>
