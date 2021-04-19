@@ -41,7 +41,7 @@
                     <label for="bottom">Vælg bund</label>
                     <select name="sport" id="bottom">
                         <c:forEach var="bottom" items="${applicationScope.bottomList}">
-                            <option value="${bottom.id}">${bottom.name}   ${bottom.price},-</option>
+                            <option value="${bottom.id}">${bottom.name} DKK ${bottom.price},-</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -50,7 +50,7 @@
                     <label for="topping">Vælg topping</label>
                     <select name="topping" id="topping">
                         <c:forEach var="topping" items="${applicationScope.toppingList}">
-                            <option value="${topping.id}">${topping.name}   ${topping.price},-</option>
+                            <option value="${topping.id}">${topping.name} DKK ${topping.price},-</option>
                         </c:forEach>
                     </select>
                 </div>
