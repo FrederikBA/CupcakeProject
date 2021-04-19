@@ -33,6 +33,9 @@
         <nav class="navbar-brand">
             <a class="header-link">Ordrer</a>
             <a class="header-link">Kunder</a>
+            <a href="${pageContext.request.contextPath}/fc/shoppingcart">
+                <i class="fas fa-shopping-cart right header-link shopping-cart"></i>
+            </a>
             <c:if test="${sessionScope.user != null }">
                 <p class="right ">${sessionScope.user.email}</p>
             </c:if>
@@ -52,10 +55,6 @@
                        href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                 </c:if>
             </c:if>
-
-            <a href="${pageContext.request.contextPath}/fc/shoppingcart">
-                <i class="fas fa-shopping-cart right header-link"></i>
-            </a>
         </nav>
     </div>
 </header>
