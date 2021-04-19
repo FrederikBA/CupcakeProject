@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col">
                     <label for="bottom">Vælg bund</label>
-                    <select name="sport" id="bottom">
+                    <select name="bottom" id="bottom">
                         <c:forEach var="bottom" items="${applicationScope.bottomList}">
                             <option value="${bottom.id}">${bottom.name} DKK ${bottom.price},-</option>
                         </c:forEach>
