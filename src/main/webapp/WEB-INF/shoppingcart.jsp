@@ -14,7 +14,58 @@
 
     <jsp:body>
 
-     <h1>This is the shopping cart page</h1>
+        <h1>This is the shopping cart page</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Antal</th>
+                <th scope="col">Topping</th>
+                <th scope="col">Bottom</th>
+                <th scope="col">pris</th>
+                <th scope="col">fjern</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">7</th>
+                <td>jordbær</td>
+                <td>vanilje</td>
+                <td>Dkk 5.-</td>
+                <td><input type="submit" value="Fjern"></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>jordbær</td>
+                <td>vanilje</td>
+                <td>Dkk 5.-</td>
+                <td><input type="submit" value="Fjern"></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>jordbær</td>
+                <td>vanilje</td>
+                <td>Dkk 5.-</td>
+                <td><input type="submit" value="Fjern"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>jordbær</td>
+                <td>vanilje</td>
+                <td>Dkk 5.-</td>
+                <td><input type="submit" value="Fjern"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <br>
+        <div align="center" class="align-content-center"> Total pris 50kr.-</div>
+
+        <div align="center" class="align-content-center">
+        <td><input type="submit" value="Køb"></td>
+        <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+        </div>
 
     </jsp:body>
 </t:genericpage>

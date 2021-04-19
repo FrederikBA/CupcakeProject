@@ -16,7 +16,7 @@
 
         <div class="row">
             <div class="col"></div>
-            <div class="col-sm-11">
+            <div class="col-sm-11 ">
                 <h1 class="">Velkommen ombord</h1>
 
                 <h2>Øens bedste cupcakes. Vælg og bestil her:</h2>
@@ -55,7 +55,7 @@
                     </select>
                 </div>
 
-                <div class="col">
+                <div class="col ">
                     <label for="fname">Vælg antal: </label>
                     <input type="text" id="fname" name="fname">
                     <input type="submit" value="Submit">
