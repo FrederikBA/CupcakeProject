@@ -2,20 +2,18 @@ package business.entities;
 
 public class User {
 
-    public User(String email, String password, String role, Double credit)
+    public User(String email, String password, String role)
     {
 
         this.email = email;
         this.password = password;
         this.role = role;
-        this.credit = credit;
     }
 
     private int id;
     private String email;
     private String password;
     private String role;
-    private Double credit;
 
     public String getEmail() {
         return email;
@@ -49,11 +47,4 @@ public class User {
         this.id = id;
     }
 
-    public Double getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Double credit) {
-        this.credit = credit;
-    }
 }
