@@ -52,6 +52,10 @@
                        href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                 </c:if>
             </c:if>
+
+            <a href="${pageContext.request.contextPath}/fc/shoppingcart">
+                <i class="fas fa-shopping-cart right header-link"></i>
+            </a>
         </nav>
     </div>
 </header>
