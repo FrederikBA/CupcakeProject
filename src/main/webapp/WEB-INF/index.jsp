@@ -21,10 +21,6 @@
 
                 <h2>Øens bedste cupcakes. Vælg og bestil her:</h2>
 
-                <div style="margin-top: 3em;margin-bottom: 3em;">
-                    Main page for this 2. semester start project used at cphbusiness.dk
-                </div>
-
                 <c:if test="${sessionScope.role == 'employee' }">
                 <p style="font-size: larger">This is what you can do,
                     since your are logged in as an employee</p>
@@ -39,44 +35,31 @@
             </div>
             <div class="col"></div>
         </div>
-
-        <div class="row">
-            <form>
-
+        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
+            <div class="row">
                 <div class="col">
-                    <div>
-                        <label for="bottom">Vælg bund</label>
-                        <select name="sport" id="bottom">
-                            <option>chokolade</option>
-                            <option>vanilje</option>
-                            <!-- <c:forEach var="sport" items="${applicationScope.sportList}">
-                    <option value="${sport.sportId}">${sport.sportName}</option>
-                </c:forEach> -->
-                        </select>
-                    </div>
+                    <label for="bottom">Vælg bund</label>
+                    <select name="sport" id="bottom">
+                        <option>chokolade</option>
+                        <option>vanilje</option>
+                    </select>
                 </div>
 
                 <div class="col">
-                    <div>
-                        <label for="topping">Vælg Top</label>
-                        <select name="sport" id="topping">
-                            <option>pistache</option>
-                            <option>valnød</option>
-                            <!-- <c:forEach var="sport" items="${applicationScope.sportList}">
-                    <option value="${sport.sportId}">${sport.sportName}</option>
-                </c:forEach> -->
-                        </select>
-                    </div>
+                    <label for="topping">Vælg topping</label>
+                    <select name="topping" id="topping">
+                        <option>chokolade</option>
+                        <option>vanilje</option>
+                    </select>
                 </div>
 
                 <div class="col">
-                    <label for="fname">First name: </label>
-                    <input type="text" id="fname" name="fname"><br><br>
+                    <label for="fname">Vælg antal: </label>
+                    <input type="text" id="fname" name="fname">
                     <input type="submit" value="Submit">
                 </div>
-            </form>
-        </div>
-
+            </div>
+        </form>
 
     </jsp:body>
 </t:genericpage>

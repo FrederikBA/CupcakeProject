@@ -31,5 +31,17 @@ h1 {
 }
 
 .banner-container {
-    min-height:300px;
+    min-height: 300px;
+}
+
+.leftcol {
+    background-color: red;
+}
+
+.centercol {
+    background-color: blue;
+}
+
+.rightcol {
+    background-color: green;
 }
