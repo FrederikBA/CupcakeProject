@@ -40,16 +40,18 @@
                 <div class="col">
                     <label for="bottom">Vælg bund</label>
                     <select name="sport" id="bottom">
-                        <option>chokolade</option>
-                        <option>vanilje</option>
+                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                            <option value="${bottom.id}">${bottom.name}   ${bottom.price},-</option>
+                        </c:forEach>
                     </select>
                 </div>
 
                 <div class="col">
                     <label for="topping">Vælg topping</label>
                     <select name="topping" id="topping">
-                        <option>chokolade</option>
-                        <option>vanilje</option>
+                        <c:forEach var="topping" items="${applicationScope.toppingList}">
+                            <option value="${topping.id}">${topping.name}   ${topping.price},-</option>
+                        </c:forEach>
                     </select>
                 </div>
 
