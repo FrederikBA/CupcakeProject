@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "FrontController", urlPatterns = {"/fc/*"})
 public class FrontController extends HttpServlet {
     private final static String USER = "root";
-    private final static String PASSWORD = "root";
+    private final static String PASSWORD = "root123";
     private final static String URL = "jdbc:mysql://localhost:3306/cupcake?serverTimezone=CET";
 
     public static Database database;
@@ -36,15 +36,20 @@ public class FrontController extends HttpServlet {
         }
 
         // Initialize whatever global datastructures needed here:
-        BottomMapper bottomMapper = new BottomMapper(database);
-        ToppingMapper toppingMapper = new ToppingMapper(database);
+        CupcakeFacade cupcakeFacade = new CupcakeFacade(database);
         try {
-            getServletContext().setAttribute("bottomList", bottomMapper.getAllBottoms());
-            getServletContext().setAttribute("toppingList", toppingMapper.getAllToppings());
-        } catch (UserException e) {
+            getServletContext().setAttribute("bottomList", cupcakeFacade.getAllBottoms());
+            getServletContext().setAttribute("toppingList", cupcakeFacade.getAllToppings());
+        } catch (
+                UserException e) {
             e.printStackTrace();
         }
+
     }
+
+
+    CupcakeFacade cupcakeFacade = new CupcakeFacade(database);
+
 
     protected void processRequest(
             HttpServletRequest request,
