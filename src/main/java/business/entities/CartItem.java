@@ -2,14 +2,14 @@ package business.entities;
 
 public class CartItem {
     private int quantity;
-    private Topping topping;
     private Bottom bottom;
+    private Topping topping;
     private double price;
 
-    public CartItem(int quantity, Topping topping, Bottom bottom, double price) {
+    public CartItem(int quantity, Bottom bottom, Topping topping, double price) {
         this.quantity = quantity;
-        this.topping = topping;
         this.bottom = bottom;
+        this.topping = topping;
         this.price = price;
     }
 
@@ -17,16 +17,15 @@ public class CartItem {
         return quantity;
     }
 
-    public Topping getTopping() {
-        return topping;
-    }
-
     public Bottom getBottom() {
         return bottom;
+    }
+
+    public Topping getTopping() {
+        return topping;
     }
 
     public double getPrice() {
         return price;
     }
-
 }

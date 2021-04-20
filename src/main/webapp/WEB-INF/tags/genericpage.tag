@@ -31,11 +31,11 @@
     </div>
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <nav class="navbar-brand">
-            <a href="${pageContext.request.contextPath}/fc/index" class="header-link">Hjem &nbsp;</a>
-            <a class="header-link">Ordrer &nbsp;</a>
+            <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem &nbsp;</a>
             <a class="header-link">Kunder &nbsp;</a>
+            <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">
-                <i class="fas fa-shopping-cart right header-link shopping-cart"></i>
+                <i class="fas fa-shopping-cart right header-link shopping-cart">&nbsp;</i>
             </a>
             <c:if test="${sessionScope.user != null }">
                 <p class="right ">${sessionScope.user.email}</p>

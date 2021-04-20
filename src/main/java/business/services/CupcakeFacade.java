@@ -1,8 +1,6 @@
 package business.services;
 
-import business.entities.Bottom;
-import business.entities.Topping;
-import business.entities.User;
+import business.entities.*;
 import business.exceptions.UserException;
 import business.persistence.BottomMapper;
 import business.persistence.Database;
@@ -46,5 +44,13 @@ public class CupcakeFacade {
             }
         }
         return bottom;
+    }
+
+    public double calcTotalPrice(ShoppingCart shoppingCart) {
+        double totalPrice = 0;
+        for (CartItem c : shoppingCart.getCartItems()) {
+            totalPrice += c.getPrice();
+        }
+        return totalPrice;
     }
 }
