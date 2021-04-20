@@ -31,8 +31,9 @@
     </div>
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <nav class="navbar-brand">
-            <a class="header-link">Ordrer</a>
-            <a class="header-link">Kunder</a>
+            <a href="${pageContext.request.contextPath}/fc/index" class="header-link">Hjem &nbsp;</a>
+            <a class="header-link">Ordrer &nbsp;</a>
+            <a class="header-link">Kunder &nbsp;</a>
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">
                 <i class="fas fa-shopping-cart right header-link shopping-cart"></i>
             </a>
