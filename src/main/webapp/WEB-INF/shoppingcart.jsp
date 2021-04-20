@@ -15,7 +15,7 @@
     <jsp:body>
 
         <h1>This is the shopping cart page</h1>
-
+        <h3>Cart Size: ${sessionScope.cartItemSize}</h3>
         <table class="table">
             <thead>
             <tr>
@@ -27,44 +27,25 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">7</th>
-                <td>jordbær</td>
-                <td>vanilje</td>
-                <td>Dkk 5.-</td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>jordbær</td>
-                <td>vanilje</td>
-                <td>Dkk 5.-</td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>jordbær</td>
-                <td>vanilje</td>
-                <td>Dkk 5.-</td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>jordbær</td>
-                <td>vanilje</td>
-                <td>Dkk 5.-</td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
+            <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
+                <tr>
+                    <td>${cartItem.quantity}</td>
+                    <td>${cartItem.topping}</td>
+                    <td>${cartItem.bottom}</td>
+                    <td>${cartItem.price}</td>
+                    <td><input type="submit" value="Fjern"></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
 
 
         <br>
-        <div align="center" class="align-content-center"> Total pris 50kr.-</div>
+        <div align="center" class="align-content-center"> Total pris: .-</div>
 
         <div align="center" class="align-content-center">
-        <td><input type="submit" value="Køb"></td>
-        <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+            <td><input type="submit" value="Køb"></td>
+            <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
         </div>
 
     </jsp:body>

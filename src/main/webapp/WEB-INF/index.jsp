@@ -28,7 +28,7 @@
                     </c:if>
 
                     <c:if test="${sessionScope.role == 'customer' }">
-                <p style="font-size: larger">This is what you can do, since your
+                <p style="  font-size: larger">This is what you can do, since your
                     are logged in as a customer</p>
                 <p><a href="fc/customerpage">Customer Page</a>
                     </c:if>
@@ -56,9 +56,9 @@
                 </div>
 
                 <div class="col ">
-                    <label for="fname">Vælg antal: </label>
-                    <input type="text" id="fname" name="fname">
-                    <input type="submit" value="Submit">
+                    <label for="quantity">Vælg antal: </label>
+                    <input type="text" id="quantity" name="quantity">
+                    <input type="submit" value="Læg i kurv">
                 </div>
             </div>
         </form>

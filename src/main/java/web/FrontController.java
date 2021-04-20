@@ -36,15 +36,20 @@ public class FrontController extends HttpServlet {
         }
 
         // Initialize whatever global datastructures needed here:
-        BottomMapper bottomMapper = new BottomMapper(database);
-        ToppingMapper toppingMapper = new ToppingMapper(database);
+        CupcakeFacade cupcakeFacade = new CupcakeFacade(database);
         try {
-            getServletContext().setAttribute("bottomList", bottomMapper.getAllBottoms());
-            getServletContext().setAttribute("toppingList", toppingMapper.getAllToppings());
-        } catch (UserException e) {
+            getServletContext().setAttribute("bottomList", cupcakeFacade.getAllBottoms());
+            getServletContext().setAttribute("toppingList", cupcakeFacade.getAllToppings());
+        } catch (
+                UserException e) {
             e.printStackTrace();
         }
+
     }
+
+
+    CupcakeFacade cupcakeFacade = new CupcakeFacade(database);
+
 
     protected void processRequest(
             HttpServletRequest request,
