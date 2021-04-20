@@ -31,8 +31,10 @@
     </div>
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <nav class="navbar-brand">
+
             <a class="header-link">Ordrer</a>
-            <a class="header-link">Kunder</a>
+            <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
+
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">
                 <i class="fas fa-shopping-cart right header-link shopping-cart"></i>
             </a>
@@ -55,6 +57,8 @@
                        href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                 </c:if>
             </c:if>
+
+
         </nav>
     </div>
 </header>
