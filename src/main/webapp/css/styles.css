@@ -35,11 +35,12 @@ h1 {
 }
 
 .shopping-cart-counter {
-    color:red;
+
 }
 
 .shopping-cart {
     margin-top: 8px;
+    margin-left: 25px;
     scale: 125%;
 }
 

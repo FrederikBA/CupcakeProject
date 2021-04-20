@@ -27,6 +27,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
+
         if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
@@ -37,11 +38,13 @@ public class AddToCartCommand extends CommandUnprotectedPage {
             shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
         }
 
-        int shoppingCartSize = shoppingCart.getCartItems().size();
+        if (shoppingCart.getCartItems().size() >= 1) {
+            int shoppingCartSize = shoppingCart.getCartItems().size();
+            session.setAttribute("cartItemSize", shoppingCartSize);
+        }
 
         session.setAttribute("totalPrice", cupcakeFacade.calcTotalPrice(shoppingCart));
         session.setAttribute("cart", shoppingCart);
-        session.setAttribute("cartItemSize", shoppingCartSize);
         return pageToShow;
     }
 }
