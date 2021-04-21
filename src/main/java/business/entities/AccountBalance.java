@@ -50,5 +50,13 @@ public class AccountBalance {
         this.timestamp = timestamp;
     }
 
-
+    @Override
+    public String toString() {
+        return "AccountBalance{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", balance=" + balance +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }

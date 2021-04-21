@@ -31,16 +31,11 @@
     </div>
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <nav class="navbar-brand">
-<<<<<<< HEAD
 
             <a class="header-link">Ordrer</a>
             <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
-
-=======
             <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem &nbsp;</a>
-            <a class="header-link">Kunder &nbsp;</a>
             <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
->>>>>>> 3572ea98e1d0c1c1e08cecc38d0783d189927bc3
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">
                 <i class="fas fa-shopping-cart right header-link shopping-cart">&nbsp;</i>
             </a>

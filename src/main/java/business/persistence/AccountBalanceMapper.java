@@ -61,8 +61,38 @@ public class AccountBalanceMapper {
     }
 
 
+    public AccountBalance getAccountBalanceByUserId(int id) throws UserException {
+        String query = "SELECT a.* FROM account_balance a WHERE a.timestamp = (SELECT MAX(a1.timestamp) FROM account_balance a1 WHERE a1.user_id = a.user_id) AND a.user_id = ?";
 
+        System.out.println("inside get account balance by user id: " + id);
+        try (Connection connection = database.connect()) {
+            System.out.println("inside connection");
+            try (PreparedStatement ps = connection.prepareStatement(query)) {
+                System.out.println("inside ps");
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    System.out.println("inside rs");
+                    int aid = rs.getInt("id");
+                    System.out.println("balance id: " +aid);
+                    int uid = rs.getInt("user_id");
+                    System.out.println("user id: " + uid);
+                    double balance =  rs.getDouble("balance");
+                    System.out.println("balance: " + balance);
+                    Timestamp timestamp = rs.getTimestamp("timestamp");
+                    System.out.println("timestamp: "+ timestamp.toString());
 
+                    return new AccountBalance(aid,uid,balance,timestamp);
+
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException | UserException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+        return null;
     }
+}
 
 

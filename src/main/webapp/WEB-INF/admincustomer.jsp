@@ -26,36 +26,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">7</th>
-                <td>bruger@mail.dk</td>
-                <td>11:57</td>
-                <td>Dkk 5.-</td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>bruger@mail.dk</td>
-                <td>11:57</td>
-                <td>Dkk 5.-</td>
-            </tr>
-            <tr>
-                <th scope="row">5</th>
-                <td>bruger@mail.dk</td>
-                <td>Kl: 11:57</td>
-                <td>Dkk 5.-</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>bruger@mail.dk</td>
-                <td>Kl: 11:57</td>
-                <td>Dkk 5.-</td>
-            </tr>
+            <c:forEach var="user" items="${requestScope.users}">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.email}</td>
+                    <td>${user.accountBalance.timestamp}</td>
+                    <td>${user.accountBalance.balance}</td>
+
+                    <td><input type="submit" value="Fjern"></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
         <br>
         <div align="center" class="align-content-center">
             <label for="id">ID:</label>
             <input type="text" id="id" name="id">
+            <input type="hidden" id="action" name="action" value="changebalance" />
         <label for="credit">Kredit:</label>
         <input type="text" id="credit" name="credit">
             <td><input type="submit" value="Tilføj"></td>
