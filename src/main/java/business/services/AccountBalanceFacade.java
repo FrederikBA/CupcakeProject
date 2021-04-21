@@ -12,9 +12,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * CREATED BY Janus @ 2021-04-20 - 14:06
- **/
 public class AccountBalanceFacade {
     AccountBalanceMapper accountBalanceMapper;
     private Database database;
@@ -31,9 +28,6 @@ public class AccountBalanceFacade {
     public void changeBalance(int userId, double balance) throws SQLException {
         accountBalanceMapper.updateBalance(userId, balance);
     }
-
-
-
 }
 
 

@@ -28,7 +28,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
             shoppingCart = new ShoppingCart();
         }
 
-        if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
+            if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
             Topping topping = cupcakeFacade.getToppingById(toppingId);

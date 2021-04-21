@@ -32,8 +32,6 @@
                     <td>${user.email}</td>
                     <td>${user.accountBalance.timestamp}</td>
                     <td>${user.accountBalance.balance}</td>
-
-                    <td><input type="submit" value="Fjern"></td>
                 </tr>
             </c:forEach>
             </tbody>
@@ -41,13 +39,11 @@
         <br>
         <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
             <div align="center" class="align-content-center">
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id">
-                <input type="hidden" id="action" name="action" value="changebalance"/>
-                <label for="credit">Kredit:</label>
-                <input type="text" id="credit" name="credit">
-                <td><input type="submit" value="Tilføj" name="update"></td>
-                <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+                <label for="userId">Bruger ID:</label>
+                <input type="text" id="userId" name="userId">
+                <label for="balance">Balance:</label>
+                <input type="text" id="balance" name="balance">
+                <td><input type="submit" value="Opdater Balance" name="update"></td>
             </div>
         </form>
     </jsp:body>

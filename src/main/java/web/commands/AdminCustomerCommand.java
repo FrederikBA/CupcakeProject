@@ -1,9 +1,12 @@
 package web.commands;
 
+import business.entities.AccountBalance;
 import business.entities.User;
 import business.exceptions.UserException;
 import business.persistence.AccountBalanceMapper;
 import business.persistence.UserMapper;
+import business.services.AccountBalanceFacade;
+import business.services.CupcakeFacade;
 import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,32 +24,20 @@ public class AdminCustomerCommand extends CommandProtectedPage {
 
     public AdminCustomerCommand(String pageToShow, String role) {
         super(pageToShow, role);
-        userFacade =  new UserFacade(database);
+        userFacade = new UserFacade(database);
+
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        HttpSession session = request.getSession();
         List<User> userList = userFacade.getAllUsers();
         request.setAttribute("users", userList);
 
-
-        String action = request.getParameter("action");
-
-    if (request.getParameter("update") != null) {
-        int userId = Integer.parseInt(request.getParameter("id"));
-        double balance = Double.parseDouble(request.getParameter("credit"));
-        userFacade.changeBalance(userId, balance);
-    }
-       /* switch (action){
-            case "changebalance":
-
-                userFacade.changeBalance(userId, balance);
-            case "deleteuser":
-                //metode
+        if (request.getParameter("update") != null) {
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            double balance = Double.parseDouble(request.getParameter("balance"));
+            userFacade.changeBalance(userId, balance);
         }
-*/
         return pageToShow;
-
     }
 }

@@ -2,28 +2,25 @@ package business.services;
 
 import business.entities.*;
 import business.exceptions.UserException;
-import business.persistence.BottomMapper;
+import business.persistence.CupcakeMapper;
 import business.persistence.Database;
-import business.persistence.ToppingMapper;
 
 import java.util.List;
 
 public class CupcakeFacade {
-    BottomMapper bottomMapper;
-    ToppingMapper toppingMapper;
+    CupcakeMapper cupcakeMapper;
 
     public CupcakeFacade(Database database) {
-        this.bottomMapper = new BottomMapper(database);
-        this.toppingMapper = new ToppingMapper(database);
+        this.cupcakeMapper = new CupcakeMapper(database);
     }
 
 
     public List<Bottom> getAllBottoms() throws UserException {
-        return bottomMapper.getAllBottoms();
+        return cupcakeMapper.getAllBottoms();
     }
 
     public List<Topping> getAllToppings() throws UserException {
-        return toppingMapper.getAllToppings();
+        return cupcakeMapper.getAllToppings();
     }
 
     public Topping getToppingById(int id) throws UserException {

@@ -1,6 +1,14 @@
 package business.entities;
 
+import business.services.AccountBalanceFacade;
+
 public class User {
+    private int id;
+    private String email;
+    private String password;
+    private String role;
+    private AccountBalance accountBalance;
+
 
     public User(String email, String password, String role, AccountBalance balance) {
         this.email = email;
@@ -16,18 +24,13 @@ public class User {
         this.accountBalance = null;
     }
 
-    public User(int id, String email, String role, AccountBalance balance){
+    public User(int id, String email, String role, AccountBalance balance) {
         this.id = id;
         this.email = email;
         this.role = role;
         this.accountBalance = balance;
     }
 
-    private int id;
-    private String email;
-    private String password;
-    private String role;
-    private AccountBalance accountBalance;
 
     public String getEmail() {
         return email;

@@ -10,19 +10,16 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * CREATED BY Janus @ 2021-04-20 - 13:25
- **/
 public class AccountBalanceMapper {
 
     private Database database;
 
-    public AccountBalanceMapper(Database database){
+    public AccountBalanceMapper(Database database) {
         this.database = database;
     }
 
     public List<AccountBalance> getAccountBalance() throws UserException {
-          List<AccountBalance> accountBalanceList = new ArrayList<>();
+        List<AccountBalance> accountBalanceList = new ArrayList<>();
 
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM account_balance";
@@ -48,11 +45,11 @@ public class AccountBalanceMapper {
     }
 
     public void updateBalance(int userId, double balance) throws SQLException {
-        try  (Connection connection = database.connect()){
+        try (Connection connection = database.connect()) {
             String sql = "INSERT INTO account_balance(user_id,balance) VALUES (?,?)";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,userId);
-            ps.setDouble(2,balance);
+            ps.setInt(1, userId);
+            ps.setDouble(2, balance);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -70,10 +67,10 @@ public class AccountBalanceMapper {
                 if (rs.next()) {
                     int aid = rs.getInt("id");
                     int uid = rs.getInt("user_id");
-                    double balance =  rs.getDouble("balance");
+                    double balance = rs.getDouble("balance");
                     Timestamp timestamp = rs.getTimestamp("timestamp");
 
-                    return new AccountBalance(aid,uid,balance,timestamp);
+                    return new AccountBalance(aid, uid, balance, timestamp);
 
                 }
             } catch (SQLException ex) {
@@ -85,5 +82,4 @@ public class AccountBalanceMapper {
         return null;
     }
 }
-
 
