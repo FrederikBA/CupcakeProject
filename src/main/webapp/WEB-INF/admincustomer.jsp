@@ -39,15 +39,16 @@
             </tbody>
         </table>
         <br>
-        <div align="center" class="align-content-center">
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id">
-            <input type="hidden" id="action" name="action" value="changebalance" />
-        <label for="credit">Kredit:</label>
-        <input type="text" id="credit" name="credit">
-            <td><input type="submit" value="Tilføj"></td>
-            <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
-        </div>
-
+        <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
+            <div align="center" class="align-content-center">
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id">
+                <input type="hidden" id="action" name="action" value="changebalance"/>
+                <label for="credit">Kredit:</label>
+                <input type="text" id="credit" name="credit">
+                <td><input type="submit" value="Tilføj" name="update"></td>
+                <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+            </div>
+        </form>
     </jsp:body>
 </t:genericpage>

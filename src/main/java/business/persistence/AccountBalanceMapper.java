@@ -47,12 +47,12 @@ public class AccountBalanceMapper {
         }
     }
 
-    public void setKredit(int id, double credit) throws SQLException {
+    public void updateBalance(int userId, double balance) throws SQLException {
         try  (Connection connection = database.connect()){
-            String sql = "UPDATE account_balance SET balance = (?) WHERE id = (?)";
+            String sql = "INSERT INTO account_balance(user_id,balance) VALUES (?,?)";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setDouble(1, credit);
-            ps.setInt(2, id);
+            ps.setInt(1,userId);
+            ps.setDouble(2,balance);
             ps.executeUpdate();
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
@@ -63,24 +63,15 @@ public class AccountBalanceMapper {
 
     public AccountBalance getAccountBalanceByUserId(int id) throws UserException {
         String query = "SELECT a.* FROM account_balance a WHERE a.timestamp = (SELECT MAX(a1.timestamp) FROM account_balance a1 WHERE a1.user_id = a.user_id) AND a.user_id = ?";
-
-        System.out.println("inside get account balance by user id: " + id);
         try (Connection connection = database.connect()) {
-            System.out.println("inside connection");
             try (PreparedStatement ps = connection.prepareStatement(query)) {
-                System.out.println("inside ps");
                 ps.setInt(1, id);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    System.out.println("inside rs");
                     int aid = rs.getInt("id");
-                    System.out.println("balance id: " +aid);
                     int uid = rs.getInt("user_id");
-                    System.out.println("user id: " + uid);
                     double balance =  rs.getDouble("balance");
-                    System.out.println("balance: " + balance);
                     Timestamp timestamp = rs.getTimestamp("timestamp");
-                    System.out.println("timestamp: "+ timestamp.toString());
 
                     return new AccountBalance(aid,uid,balance,timestamp);
 

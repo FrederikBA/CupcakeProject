@@ -29,17 +29,23 @@ public class AdminCustomerCommand extends CommandProtectedPage {
         HttpSession session = request.getSession();
         List<User> userList = userFacade.getAllUsers();
         request.setAttribute("users", userList);
-/*
+
+
         String action = request.getParameter("action");
-        switch (action){
+
+    if (request.getParameter("update") != null) {
+        int userId = Integer.parseInt(request.getParameter("id"));
+        double balance = Double.parseDouble(request.getParameter("credit"));
+        userFacade.changeBalance(userId, balance);
+    }
+       /* switch (action){
             case "changebalance":
-                int userId = Integer.parseInt(request.getParameter("userid"));
-                double balance = Double.parseDouble(request.getParameter("balance"));
+
                 userFacade.changeBalance(userId, balance);
             case "deleteuser":
                 //metode
-        }*/
-
+        }
+*/
         return pageToShow;
 
     }

@@ -29,36 +29,11 @@ public class AccountBalanceFacade {
     }
 
     public void changeBalance(int userId, double balance) throws SQLException {
-        accountBalanceMapper.setKredit(userId, balance);
+        accountBalanceMapper.updateBalance(userId, balance);
     }
 
-
-
-    /*public List<AccountBalanceMapper> getAllAcc() throws UserException {
-     //   return AccountBalanceMapper.
-
-    public void tmpAcc (){
-    }
-*/
 
 
 }
 
 
-/*
-    public void addKredit(int id, double kredit) throws SQLException {
-        new AccountBalanceMapper(database).setKredit(id, kredit);
-    }
-
-    private void addkredit(HttpServletRequest request) {
-        String kundeId = request.getParameter("kunderID");
-        String kundeKredit = request.getParameter("KreditToAdd");
-        try {
-            int parseID = Integer.parseInt(kundeId);
-            double parseKredit = Double.parseDouble(kundeKredit);
-            loginFacade.addKredit(parseID, parseKredit);
-        } catch (NumberFormatException | SQLException e) {
-            e.printStackTrace();
-        }
-
-    }*/
