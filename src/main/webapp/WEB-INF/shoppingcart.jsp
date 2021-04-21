@@ -41,6 +41,7 @@
         <div align="center" class="align-content-center">
             <td><input type="submit" value="Køb"></td>
             <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+            <!-- Check if user is logged into an account -->
         </div>
 
     </jsp:body>

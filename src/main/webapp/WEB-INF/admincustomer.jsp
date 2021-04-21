@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-        <h1>Admin customer page</h1>
+        <h3>Her kan admin se kunder, deres credit og ændre deres credit</h3>
 
         <table class="table">
             <thead>

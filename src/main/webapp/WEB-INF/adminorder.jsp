@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-        <h1>This is the order page</h1>
+        <h3>Her kan admin se kundens ordrer og fjerne den</h3>
 
 
         <table class="table">
@@ -22,7 +22,7 @@
             <tr>
                 <th scope="col">bruger ID</th>
                 <th scope="col">ordre ID</th>
-                <th scope="col">Bruger Email</th>
+                <th scope="col">Email</th>
                 <th scope="col">Fjern ordre</th>
             </tr>
             </thead>

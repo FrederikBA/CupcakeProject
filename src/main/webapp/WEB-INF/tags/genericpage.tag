@@ -34,7 +34,8 @@
 
             <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem &nbsp;</a>
             <c:if test="${sessionScope.user.role.equals('employee')}">
-            <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
+            <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link" >Se kunder</a>
+            <a href="${pageContext.request.contextPath}/fc/adminorder" class="header-link">Se ordrer</a>
             </c:if>
             <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">
