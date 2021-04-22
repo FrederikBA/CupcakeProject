@@ -21,7 +21,7 @@
             <tr>
                 <th scope="col">Bruger ID</th>
                 <th scope="col">Email</th>
-                <th scope="col">Timestamp</th>
+                <th scope="col">Tidspunkt</th>
                 <th scope="col">Kredit</th>
             </tr>
             </thead>
