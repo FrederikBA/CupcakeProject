@@ -24,12 +24,10 @@ public class AdminOrderCommand extends CommandProtectedPage {
         request.setAttribute("orderList", orderList);
 
 
-        // request.setAttribute("deleteOrder", orderFacade.deleteOrder(1));
 
-        if (request.getParameter("deleteOrder") != null) {
-            int userId = Integer.parseInt(request.getParameter("userId"));
-            double balance = Double.parseDouble(request.getParameter("balance"));
-            orderFacade.deleteOrder(1);
+        if (request.getParameter("delete") != null) {
+            String deleteId = request.getParameter("delete");
+            orderFacade.deleteOrder(Integer.parseInt(deleteId));
         }
 
         return pageToShow;

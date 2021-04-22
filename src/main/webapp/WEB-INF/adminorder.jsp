@@ -24,6 +24,7 @@
                 <th scope="col">Ordrer ID</th>
                 <th scope="col">Price</th>
                 <th scope="col">Timestamp</th>
+                <th scope="col">Fjern</th>
             </tr>
             </thead>
             <tbody>
@@ -33,19 +34,16 @@
                     <td>${order.orderId}</td>
                     <td>${order.price}</td>
                     <td>${order.timestamp}</td>
+                    <form method="post">
+                   <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">Remove</button></td>
+                    </form>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
 
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/adminorder">
-            <div align="center" class="align-content-center">
-                <label for="userId">Bruger ID:</label>
-                <input type="text" id="userId" name="userId">
-                <td><input type="submit" value="Slet ordrer" name="deleteOrder"></td>
-            </div>
-        </form>
+
 
 
     </jsp:body>

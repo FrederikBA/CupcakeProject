@@ -21,7 +21,7 @@ public class OrderFacade {
     }
 
     public int deleteOrder(int orderId) throws UserException {
-        return deleteOrder(1);
+        return orderMapper.deleteOrder(orderId);
     }
 
     public void insertIntoOrders(int userId, double price) throws UserException {
