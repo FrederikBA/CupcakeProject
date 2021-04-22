@@ -28,15 +28,24 @@
             </thead>
             <tbody>
             <c:forEach var="order" items="${requestScope.orderList}">
-            <tr>
-            <td>${order.userId}</td>
-            <td>${order.orderId}</td>
-            <td>${order.price}</td>
-            <td>${order.timestamp}</td>
-            </tr>
+                <tr>
+                    <td>${order.userId}</td>
+                    <td>${order.orderId}</td>
+                    <td>${order.price}</td>
+                    <td>${order.timestamp}</td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
+
+
+        <form method="post" action="${pageContext.request.contextPath}/fc/adminorder">
+            <div align="center" class="align-content-center">
+                <label for="userId">Bruger ID:</label>
+                <input type="text" id="userId" name="userId">
+                <td><input type="submit" value="Slet ordrer" name="deleteOrder"></td>
+            </div>
+        </form>
 
 
     </jsp:body>

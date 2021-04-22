@@ -21,7 +21,16 @@ public class AdminOrderCommand extends CommandProtectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         List<Order> orderList = orderFacade.getAllorders();
 
-        request.setAttribute("orderList",orderList);
+        request.setAttribute("orderList", orderList);
+
+
+        // request.setAttribute("deleteOrder", orderFacade.deleteOrder(1));
+
+        if (request.getParameter("deleteOrder") != null) {
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            double balance = Double.parseDouble(request.getParameter("balance"));
+            orderFacade.deleteOrder(1);
+        }
 
         return pageToShow;
     }
