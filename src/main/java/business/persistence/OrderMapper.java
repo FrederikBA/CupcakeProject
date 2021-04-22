@@ -40,4 +40,22 @@ public class OrderMapper {
         }
     }
 
+    public void insertIntoOrders(int userId, double price) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO orders(user_id,order_price) VALUES (?,?)";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, userId);
+                ps.setDouble(2, price);
+                ps.executeUpdate();
+                //TODO: Insert orders into order_content table
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException | UserException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
 }
