@@ -20,39 +20,21 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">bruger ID</th>
-                <th scope="col">ordre ID</th>
-                <th scope="col">Email</th>
-                <th scope="col">Fjern ordre</th>
+                <th scope="col">Bruger ID</th>
+                <th scope="col">Ordrer ID</th>
+                <th scope="col">Price</th>
+                <th scope="col">Timestamp</th>
             </tr>
             </thead>
             <tbody>
+            <c:forEach var="order" items="${requestScope.orderList}">
             <tr>
-                <th scope="row">1</th>
-                <td>2</td>
-                <td>Lars@mail.dk</td>
-                <td><input type="submit" value="Fjern"></td>
-
+            <td>${order.userId}</td>
+            <td>${order.orderId}</td>
+            <td>${order.price}</td>
+            <td>${order.timestamp}</td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>6</td>
-                <td>Otto@mail.dk</td>
-                <td><input type="submit" value="Fjern"></td>
-
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td> 9</td>
-                <td>Emil@mail.dk</td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
-            <tr>
-                <th scope="row">4</th>
-                <td>1   </td>
-                <td>Mads@mail.com  </td>
-                <td><input type="submit" value="Fjern"></td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
 
