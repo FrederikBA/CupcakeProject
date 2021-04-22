@@ -1,5 +1,6 @@
 package business.persistence;
 
+import business.entities.CartItem;
 import business.entities.Order;
 import business.entities.Topping;
 import business.exceptions.UserException;
@@ -65,8 +66,6 @@ public class OrderMapper {
                 ps.setInt(1, userId);
                 ps.setDouble(2, price);
                 ps.executeUpdate();
-                //TODO: Insert orders into order_content table
-
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
@@ -75,4 +74,23 @@ public class OrderMapper {
         }
     }
 
+    public void insertIntoOrderContent(int toppingId, int bottomId, int quantity, double price, int order_id) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO order_content(topping_id,bottom_id,quantity,price,order_id) VALUES (?,?,?,?,?)";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setInt(1, toppingId);
+                ps.setInt(2, bottomId);
+                ps.setInt(3, quantity);
+                ps.setDouble(4, price);
+                ps.setInt(5, order_id);
+                ps.executeUpdate();
+
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
 }
