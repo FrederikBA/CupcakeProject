@@ -13,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h3 name="userId" id="userId">User ID: ${sessionScope.user.id}</h3>
         <table class="table">
             <thead>
             <tr>
@@ -36,13 +37,14 @@
             </tbody>
         </table>
         <br>
-        <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
+        <form method="post">
+            <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
 
-        <div align="center" class="align-content-center">
-            <td><input type="submit" value="Køb"></td>
-            <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
-            <!-- Check if user is logged into an account -->
-        </div>
-
+            <div align="center" class="align-content-center">
+                <td><input type="submit" name="buy" id="buy" value="Køb"></td>
+                <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+                <!-- Check if user is logged into an account -->
+            </div>
+        </form>
     </jsp:body>
 </t:genericpage>

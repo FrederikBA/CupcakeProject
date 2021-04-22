@@ -19,7 +19,7 @@ public class AdminOrderCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        List<Order> orderList = orderFacade.getAllorders();
+        List<Order> orderList = orderFacade.getAllOrders();
 
         request.setAttribute("orderList", orderList);
 
