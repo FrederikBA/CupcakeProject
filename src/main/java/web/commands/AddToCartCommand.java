@@ -24,11 +24,13 @@ public class AddToCartCommand extends CommandUnprotectedPage {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
         User user;
-        int userId = 1; //TODO: Should be made dynamtic in response to login.
+        int userId = 1;
+
         if (session.getAttribute("user") != null) {
             user = (User) session.getAttribute("user");
             userId = user.getId();
         }
+
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
         if (shoppingCart == null) {
@@ -47,6 +49,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
 
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
 
+
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
             session.setAttribute("cartItemSize", shoppingCartSize);
@@ -60,6 +63,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         }
         session.setAttribute("totalPrice", totalPrice);
         session.setAttribute("cart", shoppingCart);
+
         return pageToShow;
     }
 }
