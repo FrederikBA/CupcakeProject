@@ -31,6 +31,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
             userId = user.getId();
         }
 
+
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
         if (shoppingCart == null) {
@@ -38,10 +39,13 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         }
 
         if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
+
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
             Topping topping = cupcakeFacade.getToppingById(toppingId);
             Bottom bottom = cupcakeFacade.getBottomById(bottomId);
+
+
             int quantity = Integer.parseInt(request.getParameter("quantity"));
             double price = quantity * (topping.getPrice() + bottom.getPrice());
             shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
@@ -58,7 +62,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {
             throw new UserException("You must be logged in");
         } else if (request.getParameter("buy") != null) {
-            orderFacade.insertIntoOrders(userId, totalPrice);
+            orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
             shoppingCart.getCartItems().clear();
         }
         session.setAttribute("totalPrice", totalPrice);

@@ -25,11 +25,7 @@ public class OrderFacade {
         return orderMapper.deleteOrder(orderId);
     }
 
-    public void insertIntoOrders(int userId, double price) throws UserException {
-        orderMapper.insertIntoOrders(userId, price);
-    }
-
-    public void insertIntoOrderContent(int toppingId, int bottomId, int quantity, double price, int order_id) throws UserException {
-        orderMapper.insertIntoOrderContent(toppingId, bottomId, quantity, price, order_id);
+    public void insertIntoOrders(int userId, List<CartItem> items) throws UserException {
+        orderMapper.insertIntoOrders(userId, items);
     }
 }

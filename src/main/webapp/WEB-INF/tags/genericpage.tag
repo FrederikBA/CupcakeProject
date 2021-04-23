@@ -32,10 +32,10 @@
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <nav class="navbar-brand">
 
-            <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem &nbsp;</a>
+            <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem</a>
             <c:if test="${sessionScope.user.role.equals('employee')}">
-            <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link" >Se kunder</a>
-            <a href="${pageContext.request.contextPath}/fc/adminorder" class="header-link">Se ordrer</a>
+                <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
+                <a href="${pageContext.request.contextPath}/fc/adminorder" class="header-link">Ordrer</a>
             </c:if>
             <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
             <a href="${pageContext.request.contextPath}/fc/shoppingcart">

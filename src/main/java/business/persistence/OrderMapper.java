@@ -58,32 +58,46 @@ public class OrderMapper {
         }
     }
 
-    public void insertIntoOrders(int userId, double price) throws UserException {
+    public void insertIntoOrders(int userId, List<CartItem> items) throws UserException {
+        double order_price = 0.0;
+        int orderId = 0;
+        for(CartItem c: items) {
+            order_price += c.getPrice();
+        }
+
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO orders(user_id,order_price) VALUES (?,?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ps.setInt(1, userId);
-                ps.setDouble(2, price);
+                ps.setDouble(2, order_price);
                 ps.executeUpdate();
+                ResultSet ids = ps.getGeneratedKeys();
+                ids.next();
+                orderId = ids.getInt(1);
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
+
+            for(CartItem cartItem: items) {
+                insertIntoOrderContent(orderId, cartItem);
+            }
+
         } catch (SQLException | UserException ex) {
             throw new UserException(ex.getMessage());
         }
     }
 
-    public void insertIntoOrderContent(int toppingId, int bottomId, int quantity, double price, int order_id) throws UserException {
+    public void insertIntoOrderContent(int orderId, CartItem item) throws UserException {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO order_content(topping_id,bottom_id,quantity,price,order_id) VALUES (?,?,?,?,?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-                ps.setInt(1, toppingId);
-                ps.setInt(2, bottomId);
-                ps.setInt(3, quantity);
-                ps.setDouble(4, price);
-                ps.setInt(5, order_id);
+                ps.setInt(1, item.getTopping().getId());
+                ps.setInt(2, item.getBottom().getId());
+                ps.setInt(3, item.getQuantity());
+                ps.setDouble(4, item.getPrice());
+                ps.setInt(5, orderId);
                 ps.executeUpdate();
 
             } catch (SQLException ex) {
