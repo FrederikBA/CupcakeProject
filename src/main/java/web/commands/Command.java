@@ -31,7 +31,7 @@ public abstract class Command {
         commands.put("shoppingcart", new CartCommand("shoppingcart"));
         commands.put("addtocart", new AddToCartCommand("index"));
         commands.put("receiptpage", new CommandUnprotectedPage("receiptpage"));
-        commands.put("ordercontentpage", new ViewOrderContentCommand("ordercontentpage", "employee"));
+        commands.put("ordercontentpage", new CommandProtectedPage("ordercontentpage", "employee"));
     }
 
     public static Command fromPath(

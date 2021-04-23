@@ -16,29 +16,33 @@
         <h3 name="userId" id="userId">User ID: ${sessionScope.user.id}</h3>
         <h3>Your balance: ${sessionScope.currentBalance}</h3>
         <form method="post">
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Antal</th>
-                <th scope="col">Bund</th>
-                <th scope="col">Topping</th>
-                <th scope="col">Pris</th>
-                <th scope="col">Fjern</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${cartItem.quantity}</td>
-                    <td>${cartItem.bottom}</td>
-                    <td>${cartItem.topping}</td>
-                    <td>${cartItem.price},-</td>
-                    <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${sessionScope.cart.cartItems.indexOf(cartItem)}"><Fjern></Fjern></button> </td>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Bund</th>
+                    <th scope="col">Topping</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Fjern</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <br>
+                </thead>
+                <tbody>
+                <c:forEach var="cartItem" items="${sessionScope.cart.cartItems}">
+                    <tr>
+                        <td>${cartItem.quantity}</td>
+                        <td>${cartItem.bottom}</td>
+                        <td>${cartItem.topping}</td>
+                        <td>${cartItem.price},-</td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                    value="${sessionScope.cart.cartItems.indexOf(cartItem)}">Fjern
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <br>
 
 
 
