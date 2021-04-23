@@ -87,6 +87,21 @@ public class OrderMapper {
         }
     }
 
+    public int deleteOrderContentByOrderId(int orderId) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "DELETE FROM order_content WHERE order_id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                int rowsAffected = ps.executeUpdate();
+                return rowsAffected;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException(ex.getMessage());
+        }
+    }
+
     public void insertIntoOrders(int userId, List<CartItem> items) throws UserException {
         double order_price = 0.0;
         int orderId = 0;

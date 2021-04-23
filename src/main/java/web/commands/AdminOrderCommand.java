@@ -44,6 +44,7 @@ public class AdminOrderCommand extends CommandProtectedPage {
         //Delete orders
         if (request.getParameter("delete") != null) {
             String deleteId = request.getParameter("delete");
+            orderFacade.deleteOrderContentByOrderId(Integer.parseInt(deleteId));
             orderFacade.deleteOrder(Integer.parseInt(deleteId));
         }
 
