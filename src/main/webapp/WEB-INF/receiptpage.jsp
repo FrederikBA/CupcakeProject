@@ -14,17 +14,18 @@
 
     <jsp:body>
 
-        <h3>Her kan admin se kundens ordrer og fjerne den</h3>
+        <h3>Her er kvitterings siden</h3>
 
 
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Bruger ID</th>
                 <th scope="col">Ordrer ID</th>
+                <th scope="col">Antal cupcakes</th>
+                <th scope="col">Bund</th>
+                <th scope="col">Topping</th>
                 <th scope="col">Pris</th>
                 <th scope="col">Tidspunkt</th>
-                <th scope="col">Fjern</th>
             </tr>
             </thead>
             <tbody>

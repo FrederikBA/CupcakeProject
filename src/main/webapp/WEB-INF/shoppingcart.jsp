@@ -37,13 +37,17 @@
             </tbody>
         </table>
         <br>
-        <form method="post">
+
+        <form method="post" action="${pageContext.request.contextPath}/fc/receiptpage">
             <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
 
             <div align="center" class="align-content-center">
-                <td><input type="submit" name="buy" id="buy" value="Køb"></td>
+                <td><a href="${pageContext.request.contextPath}/fc/receiptpage">
+                    <input type="submit" name="buy" id="buy" value="Køb"> </a>
+                </td>
+
                 <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
-                <!-- Check if user is logged into an account -->
+
             </div>
         </form>
     </jsp:body>
