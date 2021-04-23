@@ -44,17 +44,19 @@ public class AccountBalanceMapper {
         }
     }
 
-    public void updateBalance(int userId, double balance) throws SQLException {
+    public boolean updateBalance(int userId, double balance) throws SQLException {
         try (Connection connection = database.connect()) {
             String sql = "INSERT INTO account_balance(user_id,balance) VALUES (?,?)";
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, userId);
             ps.setDouble(2, balance);
             ps.executeUpdate();
+            return true;
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
             throwables.printStackTrace();
         }
+        return false;
     }
 
 

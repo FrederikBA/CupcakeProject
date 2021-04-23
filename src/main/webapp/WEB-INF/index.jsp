@@ -24,7 +24,7 @@
             <div class="col"></div>
         </div>
         <!--fjern action, men så tilføjer den ikke tingene til kurven. -->
-        <form method="post">
+        <form method="post" action="${pageContext.request.contextPath}/fc/addtocart">
             <div class="row">
                 <div class="col">
                     <label for="bottom">Vælg bund</label>

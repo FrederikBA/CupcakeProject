@@ -35,11 +35,11 @@ public class UserFacade
         return user;
     }
 
-    public void changeBalance(int userId, double balance) throws UserException {
+    public boolean changeBalance(int userId, double balance) throws UserException {
         AccountBalanceFacade abf = new AccountBalanceFacade(database);
 
         try {
-            abf.changeBalance(userId, balance);
+            return abf.changeBalance(userId, balance);
         } catch (SQLException ex) {
             throw new UserException("Could not update balance");
         }

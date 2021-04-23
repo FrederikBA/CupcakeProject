@@ -25,8 +25,8 @@ public class AccountBalanceFacade {
         return accountBalanceMapper.getAccountBalanceByUserId(id);
     }
 
-    public void changeBalance(int userId, double balance) throws SQLException {
-        accountBalanceMapper.updateBalance(userId, balance);
+    public boolean changeBalance(int userId, double balance) throws SQLException {
+        return accountBalanceMapper.updateBalance(userId, balance);
     }
 }
 

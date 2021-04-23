@@ -30,14 +30,17 @@ public class AdminCustomerCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        List<User> userList = userFacade.getAllUsers();
-        request.setAttribute("users", userList);
-
+        List<User> users =  userFacade.getAllUsers();
         if (request.getParameter("update") != null) {
             int userId = Integer.parseInt(request.getParameter("userId"));
             double balance = Double.parseDouble(request.getParameter("balance"));
-            userFacade.changeBalance(userId, balance);
+            if(userFacade.changeBalance(userId, balance)){
+               users = userFacade.getAllUsers();
+            } else {
+                throw new UserException("Kunne ikke blive opdateret.");
+            }
         }
+        request.setAttribute("users",  users);
         return pageToShow;
     }
 }
