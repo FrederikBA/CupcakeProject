@@ -14,8 +14,10 @@
 
     <jsp:body>
 
-        <h3>Her er kvitterings siden</h3>
-
+        <div  align="center">
+        <h3>Tak for købet.</h3>
+        <h5>Kvittering:</h5>
+        </div>
 
         <table class="table">
             <thead>

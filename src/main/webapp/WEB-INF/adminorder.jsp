@@ -34,8 +34,9 @@
                     <td>${order.orderId}</td>
                     <td>${order.price}</td>
                     <td>${order.timestamp}</td>
-                    <form method="post">
+                    <form action="${pageContext.request.contextPath}/fc/adminorder" method="post" >
                    <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">Remove</button></td>
+                        <!-- onclick="window.location.reload();"-->
                     </form>
                 </tr>
             </c:forEach>

@@ -50,4 +50,9 @@ public class CupcakeFacade {
         }
         return totalPrice;
     }
+
+    public void removeCartitems(){
+        
+
+    }
 }

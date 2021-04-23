@@ -38,15 +38,12 @@
         </table>
         <br>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/receiptpage">
-            <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
-
+       <form method="post" >
+        <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
             <div align="center" class="align-content-center">
-                <td><a href="${pageContext.request.contextPath}/fc/receiptpage">
-                    <input type="submit" name="buy" id="buy" value="Køb"> </a>
-                </td>
-
-                <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+              <td><a href="${pageContext.request.contextPath}/fc/receiptpage">
+                <input type="submit" name="buy" id="buy" value="Køb"> </a>
+            </td>
 
             </div>
         </form>

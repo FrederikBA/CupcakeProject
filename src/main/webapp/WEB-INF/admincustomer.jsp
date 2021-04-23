@@ -43,7 +43,7 @@
                 <input type="text" id="userId" name="userId">
                 <label for="balance">Balance:</label>
                 <input type="text" id="balance" name="balance">
-                <td><input type="submit" value="Opdater Balance" name="update"></td>
+                <td><input type="submit" value="Opdater Balance" name="update" onclick="window.location.reload();"></td>
             </div>
         </form>
     </jsp:body>
