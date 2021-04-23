@@ -23,7 +23,8 @@
             </div>
             <div class="col"></div>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
+        <!--fjern action, men så tilføjer den ikke tingene til kurven. -->
+        <form method="post">
             <div class="row">
                 <div class="col">
                     <label for="bottom">Vælg bund</label>
@@ -45,11 +46,14 @@
                     </select>
                 </div>
 
-                <div class="col ">
-                    <label for="quantity">Vælg antal: </label>
-                    <input type="text" id="quantity" name="quantity">
-                    <input type="submit" value="Læg i kurv">
-                </div>
+                <form action="${pageContext.request.contextPath}/fc/shoppingcart">
+                    <div class="col ">
+                        <label for="quantity">Vælg antal: </label>
+                        <input type="text" id="quantity" name="quantity">
+                        <input type="submit" value="Læg i kurv">
+                    </div>
+                </form>
+
             </div>
         </form>
 

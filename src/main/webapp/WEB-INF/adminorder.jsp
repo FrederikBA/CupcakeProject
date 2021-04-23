@@ -34,7 +34,6 @@
                         <td>${order.orderId}</td>
                         <td>${order.price}</td>
                         <td>${order.timestamp}</td>
-
                         <td>
                             <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
                                 Remove
