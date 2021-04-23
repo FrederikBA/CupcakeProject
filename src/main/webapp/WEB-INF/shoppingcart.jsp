@@ -33,7 +33,7 @@
                     <td>${cartItem.bottom}</td>
                     <td>${cartItem.topping}</td>
                     <td>${cartItem.price},-</td>
-                    <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${sessionScope.cart.cartItems.indexOf(cartItem)}">Fjern</button> </td>
+                    <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${sessionScope.cart.cartItems.indexOf(cartItem)}"><Fjern></Fjern></button> </td>
                 </tr>
             </c:forEach>
             </tbody>

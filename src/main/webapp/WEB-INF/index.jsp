@@ -48,7 +48,7 @@
                 <div class="col ">
                     <label for="quantity">Vælg antal: </label>
                     <input type="text" id="quantity" name="quantity">
-                    <input type="submit" value="Læg i kurv">
+                    <input type="submit" name="put" value="Læg i kurv">
                 </div>
             </div>
         </form>

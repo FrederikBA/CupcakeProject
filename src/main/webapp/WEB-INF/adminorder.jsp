@@ -24,6 +24,7 @@
                     <th scope="col">Ordrer ID</th>
                     <th scope="col">Pris</th>
                     <th scope="col">Tidspunkt</th>
+                    <th scope="col">Indhold</th>
                     <th scope="col">Fjern</th>
                 </tr>
                 </thead>
@@ -34,9 +35,17 @@
                         <td>${order.orderId}</td>
                         <td>${order.price}</td>
                         <td>${order.timestamp}</td>
-
                         <td>
-                            <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
+                            <a href="${pageContext.request.contextPath}/fc/ordercontentpage">
+                            <button class="btn btn-primary btn-sm" type="submit" name="content"
+                                    value="${order.orderId}">
+                                Se indhold
+                            </button>
+                            </a>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete"
+                                    value="${order.orderId}">
                                 Remove
                             </button>
                         </td>

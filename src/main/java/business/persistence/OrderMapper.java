@@ -1,9 +1,8 @@
 package business.persistence;
 
-import business.entities.CartItem;
-import business.entities.Order;
-import business.entities.Topping;
+import business.entities.*;
 import business.exceptions.UserException;
+import business.services.CupcakeFacade;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,12 +10,14 @@ import java.util.List;
 
 public class OrderMapper {
     private Database database;
+    CupcakeFacade cupcakeFacade;
 
     public OrderMapper(Database database) {
         this.database = database;
+        this.cupcakeFacade = new CupcakeFacade(database);
     }
 
-    public List<Order> getAllorders() throws UserException {
+    public List<Order> getAllOrders() throws UserException {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM orders";
@@ -33,6 +34,34 @@ public class OrderMapper {
                     orderList.add(tmpOrder);
                 }
                 return orderList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+    public List<CartItem> getOrderContentByOrderId(int orderId) throws UserException {
+        List<CartItem> items = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM order_content WHERE order_id = ?";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderId);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int toppingId = rs.getInt(2);
+                    int bottomId = rs.getInt(3);
+                    int quantity = rs.getInt(4);
+                    double price = rs.getDouble(5);
+                    Topping topping = cupcakeFacade.getToppingById(toppingId);
+                    Bottom bottom = cupcakeFacade.getBottomById(bottomId);
+
+                    CartItem cartItem = new CartItem(quantity, bottom, topping, price);
+                    items.add(cartItem);
+                }
+                return items;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
@@ -61,7 +90,7 @@ public class OrderMapper {
     public void insertIntoOrders(int userId, List<CartItem> items) throws UserException {
         double order_price = 0.0;
         int orderId = 0;
-        for(CartItem c: items) {
+        for (CartItem c : items) {
             order_price += c.getPrice();
         }
 
@@ -79,7 +108,7 @@ public class OrderMapper {
                 throw new UserException(ex.getMessage());
             }
 
-            for(CartItem cartItem: items) {
+            for (CartItem cartItem : items) {
                 insertIntoOrderContent(orderId, cartItem);
             }
 
