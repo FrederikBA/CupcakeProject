@@ -14,6 +14,8 @@
 
     <jsp:body>
         <h3 name="userId" id="userId">User ID: ${sessionScope.user.id}</h3>
+        <h3>Your balance: ${sessionScope.currentBalance}</h3>
+        <form method="post">
         <table class="table">
             <thead>
             <tr>
@@ -31,22 +33,22 @@
                     <td>${cartItem.bottom}</td>
                     <td>${cartItem.topping}</td>
                     <td>${cartItem.price},-</td>
-                    <td><input type="submit" value="Fjern"></td>
+                    <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${sessionScope.cart.cartItems.indexOf(cartItem)}">Fjern</button> </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
         <br>
 
-        <form method="post" action="${pageContext.request.contextPath}/fc/receiptpage">
+
             <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
 
             <div align="center" class="align-content-center">
-                <td><a href="${pageContext.request.contextPath}/fc/receiptpage">
-                    <input type="submit" name="buy" id="buy" value="Køb"> </a>
+                <td>
+                    <input type="submit" name="buy" id="buy" value="Køb">
                 </td>
 
-                <!-- If money needed display error msg "Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
+                <!-- If money needed display error msg " Ikke nok penge, ordren koster (penge). Du har (kredit) tilbage"-->
 
             </div>
         </form>

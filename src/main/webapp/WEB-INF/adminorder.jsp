@@ -16,34 +16,35 @@
 
         <h3>Her kan admin se kundens ordrer og fjerne den</h3>
 
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Bruger ID</th>
-                <th scope="col">Ordrer ID</th>
-                <th scope="col">Pris</th>
-                <th scope="col">Tidspunkt</th>
-                <th scope="col">Fjern</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="order" items="${requestScope.orderList}">
+        <form method="post">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${order.userId}</td>
-                    <td>${order.orderId}</td>
-                    <td>${order.price}</td>
-                    <td>${order.timestamp}</td>
-                    <form method="post">
-                   <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">Remove</button></td>
-                    </form>
+                    <th scope="col">Bruger ID</th>
+                    <th scope="col">Ordrer ID</th>
+                    <th scope="col">Pris</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Fjern</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach var="order" items="${requestScope.orderList}">
+                    <tr>
+                        <td>${order.userId}</td>
+                        <td>${order.orderId}</td>
+                        <td>${order.price}</td>
+                        <td>${order.timestamp}</td>
 
-
-
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
+                                Remove
+                            </button>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </form>
 
 
     </jsp:body>
