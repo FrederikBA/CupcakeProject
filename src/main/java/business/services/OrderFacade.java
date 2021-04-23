@@ -18,7 +18,7 @@ public class OrderFacade {
     }
 
     public List<Order> getAllOrders() throws UserException {
-        return orderMapper.getAllorders();
+        return orderMapper.getAllOrders();
     }
 
     public int deleteOrder(int orderId) throws UserException {
@@ -27,5 +27,9 @@ public class OrderFacade {
 
     public void insertIntoOrders(int userId, List<CartItem> items) throws UserException {
         orderMapper.insertIntoOrders(userId, items);
+    }
+
+    public List<CartItem> getOrderContentByOrderId(int orderId) throws UserException {
+        return orderMapper.getOrderContentByOrderId(orderId);
     }
 }

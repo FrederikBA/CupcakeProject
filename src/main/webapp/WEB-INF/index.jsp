@@ -46,14 +46,11 @@
                     </select>
                 </div>
 
-                <form action="${pageContext.request.contextPath}/fc/shoppingcart">
-                    <div class="col ">
-                        <label for="quantity">Vælg antal: </label>
-                        <input type="text" id="quantity" name="quantity">
-                        <input type="submit" value="Læg i kurv">
-                    </div>
-                </form>
-
+                <div class="col ">
+                    <label for="quantity">Vælg antal: </label>
+                    <input type="text" id="quantity" name="quantity">
+                    <input type="submit" name="put" value="Læg i kurv">
+                </div>
             </div>
         </form>
 

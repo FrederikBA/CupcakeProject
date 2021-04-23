@@ -23,7 +23,9 @@ public class AdminOrderCommand extends CommandProtectedPage {
 
         request.setAttribute("orderList", orderList);
 
-
+        if (request.getParameter("content") != null) {
+            return "ordercontentpage";
+        }
 
         if (request.getParameter("delete") != null) {
             String deleteId = request.getParameter("delete");

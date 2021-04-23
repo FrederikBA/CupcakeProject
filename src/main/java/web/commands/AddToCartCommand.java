@@ -46,7 +46,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
-
+        
         if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
@@ -77,8 +77,9 @@ public class AddToCartCommand extends CommandUnprotectedPage {
             throw new UserException("Du skal være logged in");
         } else if (request.getParameter("buy") != null && shoppingCart.getCartItems().size() > 0) {
             orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
-
             newBalance = currentBalance - totalPrice;
+
+
             if (newBalance > 0) {
                 try {
                     accountBalanceFacade.changeBalance(userId, newBalance);
@@ -90,6 +91,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
             }
 
             shoppingCart.getCartItems().clear();
+            return "receiptpage";
         }
         session.setAttribute("totalPrice", totalPrice);
         session.setAttribute("cart", shoppingCart);
