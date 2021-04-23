@@ -42,6 +42,24 @@ public class OrderMapper {
         }
     }
 
+    public int getOrderIdByTimestamp() throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM orders ORDER BY timestamp;";
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ResultSet rs = ps.executeQuery();
+                if (rs.next()) {
+                    return rs.getInt("order_id");
+                }
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
+
     public List<CartItem> getOrderContentByOrderId(int orderId) throws UserException {
         List<CartItem> items = new ArrayList<>();
         try (Connection connection = database.connect()) {

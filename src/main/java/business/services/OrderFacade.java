@@ -21,6 +21,10 @@ public class OrderFacade {
         return orderMapper.getAllOrders();
     }
 
+    public int getOrderIdByTimestamp() throws UserException {
+        return getOrderIdByTimestamp();
+    }
+
     public int deleteOrder(int orderId) throws UserException {
         return orderMapper.deleteOrder(orderId);
     }
