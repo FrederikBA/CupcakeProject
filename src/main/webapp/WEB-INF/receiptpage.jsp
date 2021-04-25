@@ -18,40 +18,36 @@
             <h3>Tak for købet.</h3>
             <h5>Kvittering:</h5>
         </div>
+        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
 
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Antal</th>
-                <th scope="col">Bund</th>
-                <th scope="col">Topping</th>
-                <th scope="col">Pris</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="cartItem" items="${requestScope.receiptList}">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${cartItem.quantity}</td>
-                    <td>${cartItem.bottom}</td>
-                    <td>${cartItem.topping}</td>
-                    <td>${cartItem.price}</td>
-
-                    <form method="post">
-                        <td>
-                            <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
-                                Remove
-                            </button>
-                        </td>
-                    </form>
+                    <th scope="col">Antal</th>
+                    <th scope="col">Bund</th>
+                    <th scope="col">Topping</th>
+                    <th scope="col">Pris</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach var="cartItem" items="${sessionScope.receiptList}">
+                    <tr>
+                        <td>${cartItem.quantity}</td>
+                        <td>${cartItem.bottom}</td>
+                        <td>${cartItem.topping}</td>
+                        <td>${cartItem.price}</td>
+
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </form>
 
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md " style="text-align:center;">
-                <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Retur til Forsiden</button>
+                <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Retur til Forsiden
+                </button>
             </div>
             <div class="col-md"></div>
         </div>
