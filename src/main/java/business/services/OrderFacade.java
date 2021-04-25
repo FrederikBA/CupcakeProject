@@ -22,7 +22,7 @@ public class OrderFacade {
     }
 
     public int getOrderIdByTimestamp() throws UserException {
-        return getOrderIdByTimestamp();
+        return orderMapper.getOrderIdByTimestamp();
     }
 
     public int deleteOrder(int orderId) throws UserException {

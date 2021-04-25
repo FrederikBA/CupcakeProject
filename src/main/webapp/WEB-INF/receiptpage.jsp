@@ -31,9 +31,9 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="order" items="${requestScope.orderList}">
+            <c:forEach var="orderidbytime" items="${requestScope.orderList}">
                 <tr>
-                    <td>${order.userId}</td>
+                    <td>${orderb.userId}</td>
                     <td>${order.orderId}</td>
                     <td>${order.price}</td>
                     <td>${order.timestamp}</td>

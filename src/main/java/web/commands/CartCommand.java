@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CartCommand extends CommandUnprotectedPage {
     CupcakeFacade cupcakeFacade;
@@ -72,6 +73,8 @@ public class CartCommand extends CommandUnprotectedPage {
             int shoppingCartSize = shoppingCart.getCartItems().size();
             session.setAttribute("cartItemSize", shoppingCartSize);
         }
+
+
 
         //Buy section
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {
