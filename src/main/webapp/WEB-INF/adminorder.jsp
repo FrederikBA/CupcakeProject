@@ -46,7 +46,7 @@
                         <td>
                             <button class="btn btn-danger btn-sm" type="submit" name="delete"
                                     value="${order.orderId}">
-                                Remove
+                                Fjern
                             </button>
                         </td>
                     </tr>

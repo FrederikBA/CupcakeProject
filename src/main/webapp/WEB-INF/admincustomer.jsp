@@ -15,29 +15,37 @@
     <jsp:body>
 
         <h3>Her kan admin se kunder, deres credit og ændre deres credit</h3>
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Bruger ID</th>
-                <th scope="col">Email</th>
-                <th scope="col">Tidspunkt</th>
-                <th scope="col">Kredit</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="user" items="${requestScope.users}">
+        <form method="post">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.email}</td>
-                    <td>${user.accountBalance.timestamp}</td>
-                    <td>${user.accountBalance.balance}</td>
+                    <th scope="col">Bruger ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Se ordrer</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <br>
-        <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${requestScope.users}">
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.email}</td>
+                        <td>${user.accountBalance.timestamp}</td>
+                        <td>${user.accountBalance.balance}</td>
+                        <td>
+                            <!<a href="${pageContext.request.contextPath}/fc/userorderpage">
+                            <button class="btn btn-primary btn-sm" type="submit" name="userorders"
+                                    value="${user.id}">
+                                Se indhold
+                            </button>
+                        </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <br>
             <div align="center" class="align-content-center">
                 <label for="userId">Bruger ID:</label>
                 <input type="text" id="userId" name="userId">
