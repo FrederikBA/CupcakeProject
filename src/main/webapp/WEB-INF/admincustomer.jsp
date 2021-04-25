@@ -65,7 +65,7 @@
                 <div class="col-md">
                     <div class="form-group">
                         <br>
-                        <button style="width:100%;" type="button" class="btn btn-secondary" name="button">Opdater
+                        <button style="width:100%;" type="button" class="btn btn-secondary" name="update">Opdater
                             Balance
                         </button>
                     </div>
