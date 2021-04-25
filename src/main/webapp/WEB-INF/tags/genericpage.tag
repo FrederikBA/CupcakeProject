@@ -33,7 +33,7 @@
         <!--  <nav class="navbar-brand navbar-expand-lg"> -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <img class="mt-1" style="width:35px; height:35px" src="${pageContext.request.contextPath}/img/logo.png">
-            <a style="font-family: Helvetica;" class="navbar-brand brand mt-2">Olsker Cupcakes</a>
+            <a style="font-family: Helvetica;" class="navbar-brand brand mt-2" href="${pageContext.request.contextPath}/fc/index">Olsker Cupcakes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

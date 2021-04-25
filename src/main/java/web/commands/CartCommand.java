@@ -75,7 +75,7 @@ public class CartCommand extends CommandUnprotectedPage {
         //Buy section
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {
 
-            throw new UserException("Du skal være logged in");
+            throw new UserException("Du skal være logged ind.");
 
         } else if (request.getParameter("buy") != null && shoppingCart.getCartItems().size() > 0) {
             newBalance = currentBalance - totalPrice;
@@ -87,7 +87,7 @@ public class CartCommand extends CommandUnprotectedPage {
                     throwables.printStackTrace();
                 }
             } else {
-                throw new UserException("Du har ikke nok penge");
+                throw new UserException("Du har ikke nok penge.");
             }
 
             shoppingCart.getCartItems().clear();
