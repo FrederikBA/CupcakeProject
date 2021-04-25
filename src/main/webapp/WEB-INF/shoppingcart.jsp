@@ -53,7 +53,6 @@
                         <input type="submit" name="buy" id="buy" value="Køb">
                     </td>
                 </a>
-
             </div>
         </form>
     </jsp:body>
