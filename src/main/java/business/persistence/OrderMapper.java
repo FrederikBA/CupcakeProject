@@ -83,7 +83,6 @@ public class OrderMapper {
             throw new UserException("Connection to database could not be established");
         }
 
-        return getOrderIdByTimestamp();
     }
 
 

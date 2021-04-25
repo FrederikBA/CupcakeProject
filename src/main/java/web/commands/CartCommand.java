@@ -37,6 +37,9 @@ public class CartCommand extends CommandUnprotectedPage {
         }
 
 
+        int printReceipt = orderFacade.getOrderIdByTimestamp();
+        session.setAttribute("printReceipt",printReceipt);
+
         double currentBalance = accountBalanceFacade.getBalanceByUserId(userId).getBalance();
         session.setAttribute("currentBalance", currentBalance);
         double newBalance = 0;

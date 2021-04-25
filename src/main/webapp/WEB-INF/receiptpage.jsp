@@ -31,12 +31,10 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="orderidbytime" items="${requestScope.orderList}">
+            <c:forEach var="orderidbytime" items="${requestScope.printReceipt}">
                 <tr>
-                    <td>${orderb.userId}</td>
-                    <td>${order.orderId}</td>
-                    <td>${order.price}</td>
-                    <td>${order.timestamp}</td>
+                    <td>${orderidbytime.}</td>
+
                     <form method="post">
                         <td>
                             <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
