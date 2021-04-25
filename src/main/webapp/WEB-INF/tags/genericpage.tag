@@ -58,10 +58,6 @@
                                style="scale:150%; margin-top:18px; ">&nbsp;</i>
                         </a>
                     </li>
-                    <li>
-                        <p class="nav-link"
-                           style="margin-top:10px; font-size:14pt;">${sessionScope.cartItemSize}</p>
-                    </li>
                 </ul>
                 <div class="ms-auto">
                     <c:if test="${sessionScope.user != null }">
@@ -74,7 +70,7 @@
 
                     <c:if test="${isNotLoginPage && isNotRegisterPage}">
                         <c:if test="${sessionScope.user != null }">
-                            <a type="button" class="btn p-2 btn-outline-secondary px-2"
+                            <a type="button" class="btn p-2 btn-outline-secondary px-2 right"
                                href="${pageContext.request.contextPath}/fc/logoutcommand"
                                style="margin-top: 10px;">Logout</a>
                         </c:if>
@@ -82,7 +78,7 @@
                             <a type="button" class="btn btn-outline-secondary mx-2 right"
                                style="margin-top: 10px;"
                                href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
-                            <a type="button" class="btn btn-outline-secondary mx-2"
+                            <a type="button" class="btn btn-outline-secondary mx-2 right"
                                style="margin-top: 10px" ;
                                href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
                         </c:if>
@@ -92,39 +88,7 @@
         </nav>
     </div>
 </header>
-<!--
-            <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem</a>
-            <c:if test="${sessionScope.user.role.equals('employee')}">
-                <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
-                <a href="${pageContext.request.contextPath}/fc/adminorder" class="header-link">Ordrer</a>
-            </c:if>
-            <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
-            <a href="${pageContext.request.contextPath}/fc/shoppingcart">
-                <i class="fas fa-shopping-cart right header-link shopping-cart">&nbsp;</i>
-            </a>
 
-
-            <c:if test="${sessionScope.user != null }">
-                <p class="right ">${sessionScope.user.email}</p>
-            </c:if>
-            <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
-            <c:set var="isNotLoginPage" value="${!fn:endsWith(thisPage,'loginpage.jsp')}"/>
-            <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
-
-            <c:if test="${isNotLoginPage && isNotRegisterPage}">
-                <c:if test="${sessionScope.user != null }">
-                    <a type="button" class="btn p-2 btn-outline-secondary right login-system"
-                       href="${pageContext.request.contextPath}/fc/logoutcommand" style="margin-right: 10px;">Logout</a>
-                </c:if>
-                <c:if test="${sessionScope.user == null }">
-                    <a type="button" class="btn btn-outline-secondary right login-system" style="margin-left: 10px;"
-                       href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
-                    <a type="button" class="btn btn-outline-secondary right login-system"
-                       href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
-                </c:if>
-            </c:if>
-        </nav>
-        -->
 
 <div id="body" class="container bg-lightgrey" style="min-height: 20vh;">
     <jsp:doBody/>
