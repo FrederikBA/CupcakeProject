@@ -1,46 +1,61 @@
 package web.commands;
 
-import business.entities.AccountBalance;
+import business.entities.Order;
 import business.entities.User;
 import business.exceptions.UserException;
-import business.persistence.AccountBalanceMapper;
-import business.persistence.UserMapper;
-import business.services.AccountBalanceFacade;
-import business.services.CupcakeFacade;
+import business.services.OrderFacade;
 import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
+
 import java.util.List;
 
-/**
- * CREATED BY Janus @ 2021-04-20 - 11:15
- **/
-public class AdminCustomerCommand extends CommandProtectedPage {
+class AdminCustomerCommand extends CommandProtectedPage {
 
     private final UserFacade userFacade;
+    private OrderFacade orderFacade;
 
     public AdminCustomerCommand(String pageToShow, String role) {
         super(pageToShow, role);
         userFacade = new UserFacade(database);
+        orderFacade = new OrderFacade(database);
 
     }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        List<User> users =  userFacade.getAllUsers();
+        List<User> users = userFacade.getAllUsers();
         if (request.getParameter("update") != null) {
             int userId = Integer.parseInt(request.getParameter("userId"));
             double balance = Double.parseDouble(request.getParameter("balance"));
-            if(userFacade.changeBalance(userId, balance)){
-               users = userFacade.getAllUsers();
+            if (userFacade.changeBalance(userId, balance)) {
+                users = userFacade.getAllUsers();
+
+
+
             } else {
                 throw new UserException("Kunne ikke blive opdateret.");
             }
         }
-        request.setAttribute("users",  users);
+
+        //Show order content from specific order
+        if (request.getParameter("userorders") != null) {
+            int userId = Integer.parseInt(request.getParameter("userorders"));
+            request.setAttribute("userId", userId);
+            List<Order> userOrders = orderFacade.getOrdersByUserId(userId);
+
+            request.setAttribute("userOrders", userOrders);
+            return "userorderpage";
+        }
+
+        //Return from order content page.
+        if (request.getParameter("return") != null) {
+            return pageToShow;
+        }
+
+
+        request.setAttribute("users", users);
         return pageToShow;
     }
 }

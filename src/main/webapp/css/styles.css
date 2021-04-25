@@ -4,6 +4,16 @@
 
 }
 
+.logo {
+    width: 50px;
+    height: 50px;
+}
+
+.logo:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
 .right {
     float: right;
 }
@@ -23,9 +33,6 @@
     cursor: pointer;
 }
 
-.login-system {
-}
-
 h1 {
     font-weight: bold;
 }
@@ -34,12 +41,7 @@ h1 {
     min-height: 300px;
 }
 
-.shopping-cart-counter {
-
-}
-
 .shopping-cart {
     margin-top: 8px;
-    margin-left: 25px;
     scale: 125%;
 }

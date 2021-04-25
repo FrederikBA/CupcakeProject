@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -15,42 +15,60 @@
     <jsp:body>
 
         <div class="row">
-            <div class="col"></div>
-            <div class="col-sm-11 ">
-                <h1 class="">Velkommen ombord</h1>
-
-                <h2>Øens bedste cupcakes. Vælg og bestil her:</h2>
+            <div class="col-sm-11">
+                <h2 style="font-weight:bold;">Velkommen ombord hos Olsker Cupcakes!</h2>
+                <br>
+                <h4>Vi tilbyder øens bedste cupcakes til øens bedste priser.</h4>
+                <br>
+                <h4>Vælg mellem vores skarpe udvalg af forskellige bunde og toppings
+                    og sammensæt din helt egen cupcake.<h4>
             </div>
-            <div class="col"></div>
         </div>
         <!--fjern action, men så tilføjer den ikke tingene til kurven. -->
         <form method="post" action="${pageContext.request.contextPath}/fc/addtocart">
             <div class="row">
-                <div class="col">
-                    <label for="bottom">Vælg bund</label>
-                    <select name="bottom" id="bottom">
-                        <option disabled selected value> Vælg Bund:</option>
-                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
-                            <option value="${bottom.id}">${bottom.name} DKK ${bottom.price},-</option>
-                        </c:forEach>
-                    </select>
+                <div class="col-md">
+                    <div class="form-group">
+                        <br>
+                        <select class="form-select" name="bottom" id="bottom">
+                            <option disabled selected value> Vælg Bund:</option>
+                            <c:forEach var="bottom" items="${applicationScope.bottomList}">
+                                <option value="${bottom.id}">${bottom.name} DKK ${bottom.price},-</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col">
-                    <label for="topping">Vælg topping</label>
-                    <select name="topping" id="topping">
-                        <option disabled selected value> Vælg Topping:</option>
-                        <c:forEach var="topping" items="${applicationScope.toppingList}">
-                            <option value="${topping.id}">${topping.name} DKK ${topping.price},-</option>
-                        </c:forEach>
-                    </select>
+                <div class="col-md">
+                    <div class="form-group">
+                        <br>
+                        <select class="form-select" name="topping" id="topping">
+                            <option disabled selected value> Vælg Topping:</option>
+                            <c:forEach var="topping" items="${applicationScope.toppingList}">
+                                <option value="${topping.id}">${topping.name} DKK ${topping.price},-</option>
+                            </c:forEach>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="col ">
-                    <label for="quantity">Vælg antal: </label>
-                    <input type="text" id="quantity" name="quantity">
-                    <input type="submit" name="put" value="Læg i kurv">
+                <div class="col-md">
+                    <div class="form-group" style="text-align:center;">
+                        <label for="quantity">Vælg antal: </label>
+                        <input class="form-control" type="text" id="quantity" name="quantity">
+                        <br>
+                        <br>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md">
+                    <div style="text-align:center;">
+                        <button style="width:150px;" class="btn btn-secondary" name="put" type="submit">Læg i kurv</button>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-md"></div>
             </div>
         </form>
 

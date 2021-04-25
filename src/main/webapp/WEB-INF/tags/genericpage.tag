@@ -30,41 +30,67 @@
          style="background-image:url(${pageContext.request.contextPath}/img/olskercupcakes.png);">
     </div>
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
-        <nav class="navbar-brand">
+        <!--  <nav class="navbar-brand navbar-expand-lg"> -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <img class="mt-1" style="width:35px; height:35px" src="${pageContext.request.contextPath}/img/logo.png">
+            <a style="font-family: Helvetica;" class="navbar-brand brand mt-2" href="${pageContext.request.contextPath}/fc/index">Olsker Cupcakes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active" style="padding-right:30px;">
+                        <a class="nav-link" style="margin-top:9px; font-size:14pt;"
+                           href="${pageContext.request.contextPath}/fc/index">Hjem</a>
+                    </li>
+                    <c:if test="${sessionScope.user.role.equals('employee')}">
+                        <li class="nav-item active" style="padding-right:30px;">
+                            <a href="${pageContext.request.contextPath}/fc/admincustomer"
+                               class="nav-link" style="margin-top:9px; font-size:14pt;" ;>Kunder</a>
+                        </li>
+                        <li class="nav-item active" style="padding-right:30px;">
+                            <a href="${pageContext.request.contextPath}/fc/adminorder"
+                               class="nav-link" style="margin-top:9px; font-size:14pt;">Ordrer</a>
+                        </li>
+                    </c:if>
+                    <li class="nav-item active">
+                        <a href="${pageContext.request.contextPath}/fc/shoppingcart">
+                            <i class="fas fa-shopping-cart nav-link px-2"
+                               style="scale:150%; margin-top:18px; "></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="ms-auto">
+                    <c:if test="${sessionScope.user != null }">
+                        <p class="right px-2"
+                           style="margin-top:16px; font-size:14pt; opacity:65%; font-weight:bold;">${sessionScope.user.email}</p>
+                    </c:if>
+                    <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
+                    <c:set var="isNotLoginPage" value="${!fn:endsWith(thisPage,'loginpage.jsp')}"/>
+                    <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
 
-            <a class="header-link" href="${pageContext.request.contextPath}/fc/index">Hjem</a>
-            <c:if test="${sessionScope.user.role.equals('employee')}">
-                <a href="${pageContext.request.contextPath}/fc/admincustomer" class="header-link">Kunder</a>
-                <a href="${pageContext.request.contextPath}/fc/adminorder" class="header-link">Ordrer</a>
-            </c:if>
-            <p class="shopping-cart-counter right mt-1">${sessionScope.cartItemSize}</p>
-            <a href="${pageContext.request.contextPath}/fc/shoppingcart">
-                <i class="fas fa-shopping-cart right header-link shopping-cart">&nbsp;</i>
-            </a>
-            <c:if test="${sessionScope.user != null }">
-                <p class="right ">${sessionScope.user.email}</p>
-            </c:if>
-            <c:set var="thisPage" value="${pageContext.request.servletPath}"/>
-            <c:set var="isNotLoginPage" value="${!fn:endsWith(thisPage,'loginpage.jsp')}"/>
-            <c:set var="isNotRegisterPage" value="${!fn:endsWith(thisPage,'registerpage.jsp')}"/>
-
-            <c:if test="${isNotLoginPage && isNotRegisterPage}">
-                <c:if test="${sessionScope.user != null }">
-                    <a type="button" class="btn p-2 btn-outline-secondary right login-system"
-                       href="${pageContext.request.contextPath}/fc/logoutcommand" style="margin-right: 10px;">Logout</a>
-                </c:if>
-                <c:if test="${sessionScope.user == null }">
-                    <a type="button" class="btn btn-outline-secondary right login-system" style="margin-left: 10px;"
-                       href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
-                    <a type="button" class="btn btn-outline-secondary right login-system"
-                       href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
-                </c:if>
-            </c:if>
-
-
+                    <c:if test="${isNotLoginPage && isNotRegisterPage}">
+                        <c:if test="${sessionScope.user != null }">
+                            <a type="button" class="btn p-2 btn-outline-secondary px-2 right"
+                               href="${pageContext.request.contextPath}/fc/logoutcommand"
+                               style="margin-top: 10px;">Logout</a>
+                        </c:if>
+                        <c:if test="${sessionScope.user == null}">
+                            <a type="button" class="btn btn-outline-secondary mx-2 right"
+                               style="margin-top: 10px;"
+                               href="${pageContext.request.contextPath}/fc/loginpage">Login</a>
+                            <a type="button" class="btn btn-outline-secondary mx-2 right"
+                               style="margin-top: 10px" ;
+                               href="${pageContext.request.contextPath}/fc/registerpage">Sign up</a>
+                        </c:if>
+                    </c:if>
+                </div>
+            </div>
         </nav>
     </div>
 </header>
+
 
 <div id="body" class="container bg-lightgrey" style="min-height: 20vh;">
     <jsp:doBody/>
@@ -77,6 +103,14 @@
     <br>
     <jsp:invoke fragment="footer"/>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

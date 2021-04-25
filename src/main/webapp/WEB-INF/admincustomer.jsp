@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -14,37 +14,64 @@
 
     <jsp:body>
 
-        <h3>Her kan admin se kunder, deres credit og ændre deres credit</h3>
-
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">Bruger ID</th>
-                <th scope="col">Email</th>
-                <th scope="col">Tidspunkt</th>
-                <th scope="col">Kredit</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="user" items="${requestScope.users}">
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.email}</td>
-                    <td>${user.accountBalance.timestamp}</td>
-                    <td>${user.accountBalance.balance}</td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <br>
+        <h3>Her kan du se informationer om kunder samt opdatere deres balance</h3>
         <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
-            <div align="center" class="align-content-center">
-                <label for="userId">Bruger ID:</label>
-                <input type="text" id="userId" name="userId">
-                <label for="balance">Balance:</label>
-                <input type="text" id="balance" name="balance">
-                <td><input type="submit" value="Opdater Balance" name="update"></td>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Bruger ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tidspunkt</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Se ordrer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${requestScope.users}">
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.email}</td>
+                        <td>${user.accountBalance.timestamp}</td>
+                        <td>${user.accountBalance.balance}</td>
+                        <td>
+                            <!<a href="${pageContext.request.contextPath}/fc/userorderpage">
+                            <button class="btn btn-primary btn-sm" type="submit" name="userorders"
+                                    value="${user.id}">
+                                Se indhold
+                            </button>
+                        </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+            <br>
+            <div class="row">
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="userId">Bruger ID:</label>
+                        <input class="form-control" type="text" id="userId" name="userId">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="balance">Balance:</label>
+                        <input class="form-control" type="text" id="balance" name="balance">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <br>
+                        <button style="width:100%;" type="button" class="btn btn-secondary" name="button">Opdater
+                            Balance
+                        </button>
+                    </div>
+                </div>
             </div>
+            <br>
         </form>
     </jsp:body>
 </t:genericpage>

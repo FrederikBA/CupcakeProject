@@ -27,43 +27,65 @@ public class AddToCartCommand extends CommandUnprotectedPage {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
         HttpSession session = request.getSession();
+
         User user;
+        int quantity = 1;
         int userId = 1;
 
+        //Get user ID
         if (session.getAttribute("user") != null) {
             user = (User) session.getAttribute("user");
             userId = user.getId();
         }
 
-        //Add to cart section
+        //Create shopping cart
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
-
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
+            session.setAttribute("cart", shoppingCart);
         }
 
+        //Error messages
+        if (request.getParameter("topping") == null || request.getParameter("bottom") == null) {
+            throw new UserException("Du mangler at vælge enten bund eller topping til din cupcake.");
+        }
+        Topping topping = null;
+        Bottom bottom = null;
+
+        if (request.getParameter("quantity").equals("")) {
+            throw new UserException("Du mangler at vælge antal.");
+        }
+
+        //Get topping and bottom objects from id
         if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
-            Topping topping = cupcakeFacade.getToppingById(toppingId);
-            Bottom bottom = cupcakeFacade.getBottomById(bottomId);
-
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            double price = quantity * (topping.getPrice() + bottom.getPrice());
-            shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
-            System.out.println(shoppingCart.getCartItems());
+            topping = cupcakeFacade.getToppingById(toppingId);
+            bottom = cupcakeFacade.getBottomById(bottomId);
         }
+
+
+        //Get quantity of selected cupcake.
+        if (!request.getParameter("quantity").equals("")) {
+            quantity = Integer.parseInt(request.getParameter("quantity"));
+        }
+
+
+        //Calculate price of cart item
+        double price = quantity * (topping.getPrice() + bottom.getPrice());
+
+
+        //Add to cart section
+        shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
+        System.out.println(shoppingCart.getCartItems());
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
+        session.setAttribute("totalPrice", totalPrice);
 
-
-
+        //Show shopping cart size when cart isn't empty
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
-            session.setAttribute("cartItemSize", shoppingCartSize);
+            request.setAttribute("cartItemSize", shoppingCartSize);
         }
-
-        session.setAttribute("totalPrice", totalPrice);
-        session.setAttribute("cart", shoppingCart);
 
         return pageToShow;
     }

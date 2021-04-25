@@ -41,24 +41,12 @@ public class CartCommand extends CommandUnprotectedPage {
         session.setAttribute("currentBalance", currentBalance);
         double newBalance = 0;
 
-        //Add to cart section
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
-        
-        if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
-            int toppingId = Integer.parseInt(request.getParameter("topping"));
-            int bottomId = Integer.parseInt(request.getParameter("bottom"));
-            Topping topping = cupcakeFacade.getToppingById(toppingId);
-            Bottom bottom = cupcakeFacade.getBottomById(bottomId);
 
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            double price = quantity * (topping.getPrice() + bottom.getPrice());
-            shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
-            System.out.println(shoppingCart.getCartItems());
-            }
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
 
 
@@ -69,29 +57,29 @@ public class CartCommand extends CommandUnprotectedPage {
         }
 
 
+        //Show shopping cart size when cart isn't empty
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
-            session.setAttribute("cartItemSize", shoppingCartSize);
+            request.setAttribute("cartItemSize", shoppingCartSize);
         }
-
 
 
         //Buy section
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {
-            throw new UserException("Du skal være logged in");
+
+            throw new UserException("Du skal være logged ind.");
+
         } else if (request.getParameter("buy") != null && shoppingCart.getCartItems().size() > 0) {
-            orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
             newBalance = currentBalance - totalPrice;
-
-
-            if (newBalance > 0) {
+            if (newBalance >= 0) {
                 try {
+                    orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
                     accountBalanceFacade.changeBalance(userId, newBalance);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
             } else {
-                throw new UserException("Du har ikke nok penge");
+                throw new UserException("Du har ikke nok penge.");
             }
 
             shoppingCart.getCartItems().clear();

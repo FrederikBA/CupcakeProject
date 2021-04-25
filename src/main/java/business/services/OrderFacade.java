@@ -40,4 +40,8 @@ public class OrderFacade {
     public List<CartItem> getOrderContentByOrderId(int orderId) throws UserException {
         return orderMapper.getOrderContentByOrderId(orderId);
     }
+
+    public List<Order> getOrdersByUserId(int id) throws UserException {
+        return orderMapper.getOrdersByUserId(id);
+    }
 }

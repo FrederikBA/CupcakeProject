@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Login page
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">

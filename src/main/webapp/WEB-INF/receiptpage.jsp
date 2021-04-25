@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -14,9 +14,9 @@
 
     <jsp:body>
 
-        <div  align="center">
-        <h3>Tak for købet.</h3>
-        <h5>Kvittering:</h5>
+        <div align="center">
+            <h3>Tak for købet.</h3>
+            <h5>Kvittering:</h5>
         </div>
 
         <table class="table">
@@ -38,16 +38,23 @@
                     <td>${order.price}</td>
                     <td>${order.timestamp}</td>
                     <form method="post">
-                   <td><button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">Remove</button></td>
+                        <td>
+                            <button class="btn btn-danger btn-sm" type="submit" name="delete" value="${order.orderId}">
+                                Remove
+                            </button>
+                        </td>
                     </form>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
 
-
-
-
-
+        <div class="row">
+            <div class="col-md"></div>
+            <div class="col-md " style="text-align:center;">
+                <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Retur til Forsiden</button>
+            </div>
+            <div class="col-md"></div>
+        </div>
     </jsp:body>
 </t:genericpage>

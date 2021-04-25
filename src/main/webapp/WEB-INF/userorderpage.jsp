@@ -14,24 +14,24 @@
 
     <jsp:body>
 
-        <h3>Her kan du se en oversigt over ordrenummer: ${requestScope.orderId}</h3>
-        <form method="post" action="${pageContext.request.contextPath}/fc/adminorder">
+        <h3>Her kan du se en oversigt over denne brugers ordrer: ${requestScope.userId}</h3>
+        <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
             <table class="table">
                 <thead>
                 <tr>
-                    <th scope="col">Antal</th>
-                    <th scope="col">Bund</th>
-                    <th scope="col">Topping</th>
+                    <th scope="col">Ordre ID</th>
+                    <th scope="col">Bruger ID</th>
                     <th scope="col">Pris</th>
+                    <th scope="col">Tidspunkt</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="cartItem" items="${requestScope.orderContent}">
+                <c:forEach var="order" items="${requestScope.userOrders}">
                     <tr>
-                        <td>${cartItem.quantity}</td>
-                        <td>${cartItem.bottom}</td>
-                        <td>${cartItem.topping}</td>
-                        <td>${cartItem.price},-</td>
+                        <td>${order.orderId}</td>
+                        <td>${order.userId}</td>
+                        <td>${order.price},-</td>
+                        <td>${order.timestamp}</td>
                     </tr>
                 </c:forEach>
                 </tbody>

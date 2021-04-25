@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -46,7 +46,7 @@
                         <td>
                             <button class="btn btn-danger btn-sm" type="submit" name="delete"
                                     value="${order.orderId}">
-                                Remove
+                                Fjern
                             </button>
                         </td>
                     </tr>

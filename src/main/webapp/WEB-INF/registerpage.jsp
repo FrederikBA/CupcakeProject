@@ -4,12 +4,12 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Register as new User
+         Olsker Cupcakes
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <div style="margin-top: 5em;">
+        <div class="bg-lightgrey">
             <form name="login" action="${pageContext.request.contextPath}/fc/registercommand" method="POST">
                 <div class="row mb-3">
                     <label class="col-sm-1 col-form-label" for="email">Email</label>

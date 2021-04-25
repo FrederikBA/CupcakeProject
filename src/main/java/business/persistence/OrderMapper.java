@@ -21,7 +21,6 @@ public class OrderMapper {
         List<Order> orderList = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM orders";
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
@@ -42,15 +41,41 @@ public class OrderMapper {
         }
     }
 
+    public List<Order> getOrdersByUserId(int id) throws UserException {
+        List<Order> orderList = new ArrayList<>();
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT * FROM orders WHERE user_id = ?";
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderId = rs.getInt("order_id");
+                    int userId = rs.getInt("user_id");
+                    double price = rs.getDouble("order_price");
+                    Timestamp timestamp = rs.getTimestamp("timestamp");
+
+                    Order tmpOrder = new Order(orderId, userId, price, timestamp);
+                    orderList.add(tmpOrder);
+                }
+                return orderList;
+            } catch (SQLException ex) {
+                throw new UserException(ex.getMessage());
+            }
+        } catch (SQLException ex) {
+            throw new UserException("Connection to database could not be established");
+        }
+    }
+
     public int getOrderIdByTimestamp() throws UserException {
+        int id = 0;
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM orders ORDER BY timestamp;";
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    return rs.getInt("order_id");
+                    id = rs.getInt("order_id");
                 }
+                return id;
             } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
@@ -66,7 +91,6 @@ public class OrderMapper {
         List<CartItem> items = new ArrayList<>();
         try (Connection connection = database.connect()) {
             String sql = "SELECT * FROM order_content WHERE order_id = ?";
-
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, orderId);
                 ResultSet rs = ps.executeQuery();
