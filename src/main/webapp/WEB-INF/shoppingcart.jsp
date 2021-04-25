@@ -13,7 +13,9 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h3>Your balance: ${sessionScope.currentBalance}</h3>
+        <c:if test="${sessionScope.user != null }">
+            <h3>Your balance: ${sessionScope.currentBalance}</h3>
+        </c:if>
         <form method="post">
             <table class="table">
                 <thead>
@@ -43,13 +45,19 @@
             </table>
             <br>
 
+            <div style="text-align:center;" class="row">
+                <div class="col-md"></div>
+                <div class="col-md">
+                    Total pris: ${sessionScope.totalPrice}.-
+                    <br>
+                    <a href="${pageContext.request.contextPath}/fc/receiptpage">
+                        <button style="width:150px;" type="submit" name="buy" id="buy" class="btn btn-success">Køb
+                        </button>
+                    </a>
+                </div>
+                <div class="col-md"></div>
 
-            <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
-            <div align="center" class="align-content-center">
 
-                <a href="${pageContext.request.contextPath}/fc/receiptpage">
-                    <input type="submit" name="buy" id="buy" value="Køb">
-                </a>
             </div>
         </form>
     </jsp:body>

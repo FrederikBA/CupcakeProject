@@ -65,6 +65,7 @@ public class CartCommand extends CommandUnprotectedPage {
         if (request.getParameter("delete") != null) {
             int deleteId = Integer.parseInt(request.getParameter("delete"));
             shoppingCart.getCartItems().remove(deleteId);
+            totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
         }
 
 

@@ -8,6 +8,7 @@ import business.services.UserFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
@@ -25,13 +26,13 @@ class AdminCustomerCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+        HttpSession session = request.getSession();
         List<User> users = userFacade.getAllUsers();
         if (request.getParameter("update") != null) {
             int userId = Integer.parseInt(request.getParameter("userId"));
             double balance = Double.parseDouble(request.getParameter("balance"));
             if (userFacade.changeBalance(userId, balance)) {
                 users = userFacade.getAllUsers();
-
 
 
             } else {
@@ -55,7 +56,7 @@ class AdminCustomerCommand extends CommandProtectedPage {
         }
 
 
-        request.setAttribute("users", users);
+        session.setAttribute("users", users);
         return pageToShow;
     }
 }

@@ -45,8 +45,11 @@
         <div class="row">
             <div class="col-md"></div>
             <div class="col-md " style="text-align:center;">
-                <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Retur til Forsiden
-                </button>
+                <a href="${pageContext.request.contextPath}/fc/index">
+                    <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Retur til
+                        Forsiden
+                    </button>
+                </a>
             </div>
             <div class="col-md"></div>
         </div>

@@ -27,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="user" items="${requestScope.users}">
+                <c:forEach var="user" items="${sessionScope.users}">
                     <tr>
                         <td>${user.id}</td>
                         <td>${user.email}</td>
@@ -65,12 +65,9 @@
                 <div class="col-md">
                     <div class="form-group">
                         <br>
-
-                        <!-- <button style="width:100%;" type="button" class="btn btn-secondary" name="update" value="update">Opdater
-                             Balance
-                         </button> -->
-
-                        <input type="submit" value="Opdater Balance" name="update">
+                        <button style="width:100%;" type="submit" class="btn btn-secondary" name="update"
+                                value="update">Opdater Balance
+                        </button>
                     </div>
                 </div>
             </div>
