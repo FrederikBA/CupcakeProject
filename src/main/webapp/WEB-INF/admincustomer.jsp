@@ -15,7 +15,7 @@
     <jsp:body>
 
         <h3>Her kan admin se kunder, deres credit og ændre deres credit</h3>
-        <form method="post">
+        <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
             <table class="table">
                 <thead>
                 <tr>

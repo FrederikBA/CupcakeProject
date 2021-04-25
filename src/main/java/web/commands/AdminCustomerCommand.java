@@ -31,6 +31,9 @@ class AdminCustomerCommand extends CommandProtectedPage {
             double balance = Double.parseDouble(request.getParameter("balance"));
             if (userFacade.changeBalance(userId, balance)) {
                 users = userFacade.getAllUsers();
+
+
+
             } else {
                 throw new UserException("Kunne ikke blive opdateret.");
             }

@@ -23,9 +23,6 @@
     cursor: pointer;
 }
 
-.login-system {
-}
-
 h1 {
     font-weight: bold;
 }
@@ -34,12 +31,7 @@ h1 {
     min-height: 300px;
 }
 
-.shopping-cart-counter {
-
-}
-
 .shopping-cart {
     margin-top: 8px;
-    margin-left: 25px;
     scale: 125%;
 }
