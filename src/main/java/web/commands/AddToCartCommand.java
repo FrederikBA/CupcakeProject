@@ -59,7 +59,7 @@ public class AddToCartCommand extends CommandUnprotectedPage {
 
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
-            session.setAttribute("cartItemSize", shoppingCartSize);
+            request.setAttribute("cartItemSize", shoppingCartSize);
         }
 
         session.setAttribute("totalPrice", totalPrice);

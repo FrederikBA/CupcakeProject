@@ -32,6 +32,8 @@
     <div class="container pb-2 mb-2 mt-2 bg-lightgrey">
         <!--  <nav class="navbar-brand navbar-expand-lg"> -->
         <nav class="navbar navbar-expand-lg navbar-light">
+            <img class="mt-1" style="width:35px; height:35px" src="${pageContext.request.contextPath}/img/logo.png">
+            <a style="font-family: Helvetica;" class="navbar-brand brand mt-2">Olsker Cupcakes</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,23 +41,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active" style="padding-right:30px;">
-                        <a class="nav-link" style="margin-top:10px; font-size:14pt;"
+                        <a class="nav-link" style="margin-top:9px; font-size:14pt;"
                            href="${pageContext.request.contextPath}/fc/index">Hjem</a>
                     </li>
                     <c:if test="${sessionScope.user.role.equals('employee')}">
                         <li class="nav-item active" style="padding-right:30px;">
                             <a href="${pageContext.request.contextPath}/fc/admincustomer"
-                               class="nav-link" style="margin-top:10px; font-size:14pt;" ;>Kunder</a>
+                               class="nav-link" style="margin-top:9px; font-size:14pt;" ;>Kunder</a>
                         </li>
                         <li class="nav-item active" style="padding-right:30px;">
                             <a href="${pageContext.request.contextPath}/fc/adminorder"
-                               class="nav-link" style="margin-top:10px; font-size:14pt;">Ordrer</a>
+                               class="nav-link" style="margin-top:9px; font-size:14pt;">Ordrer</a>
                         </li>
                     </c:if>
-                    <li class="nav-item active" style="padding-right:30px;">
+                    <li class="nav-item active">
                         <a href="${pageContext.request.contextPath}/fc/shoppingcart">
                             <i class="fas fa-shopping-cart nav-link px-2"
-                               style="scale:150%; margin-top:18px; ">&nbsp;</i>
+                               style="scale:150%; margin-top:18px; "></i>
                         </a>
                     </li>
                 </ul>

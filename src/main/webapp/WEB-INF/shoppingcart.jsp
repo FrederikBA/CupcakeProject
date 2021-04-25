@@ -45,14 +45,13 @@
             <br>
 
 
-
             <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
             <div align="center" class="align-content-center">
-                <!-- redirect til receipt page, når man klikker køb. PLUS at gemme ordrerne i DB -->
+
                 <a href="${pageContext.request.contextPath}/fc/receiptpage">
-                <td>
-                    <input type="submit" name="buy" id="buy" value="Køb">
-                </td>
+                    <td>
+                        <input type="submit" name="buy" id="buy" value="Køb">
+                    </td>
                 </a>
 
             </div>
