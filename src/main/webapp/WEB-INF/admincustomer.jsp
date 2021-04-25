@@ -65,13 +65,16 @@
                 <div class="col-md">
                     <div class="form-group">
                         <br>
-                        <button style="width:100%;" type="button" class="btn btn-secondary" name="button">Opdater
-                            Balance
-                        </button>
+
+                        <!-- <button style="width:100%;" type="button" class="btn btn-secondary" name="update" value="update">Opdater
+                             Balance
+                         </button> -->
+
+                        <input type="submit" value="Opdater Balance" name="update">
                     </div>
                 </div>
             </div>
             <br>
         </form>
     </jsp:body>
-</t:genericpage>
+</t:genericpage>    

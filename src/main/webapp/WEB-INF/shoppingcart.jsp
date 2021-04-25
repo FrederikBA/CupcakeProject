@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Olsker Cupcakes
+         Home
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -13,6 +13,7 @@
     </jsp:attribute>
 
     <jsp:body>
+        <h3 name="userId" id="userId">User ID: ${sessionScope.user.id}</h3>
         <h3>Your balance: ${sessionScope.currentBalance}</h3>
         <form method="post">
             <table class="table">
@@ -43,20 +44,16 @@
             </table>
             <br>
 
-            <div style="text-align:center; font-size:14pt;" class="row">
-                <div class="col-md"></div>
-                <div class="col-md">
-                    Total pris: ${sessionScope.totalPrice}.-
-                    <br>
-                    <a href="${pageContext.request.contextPath}/fc/receiptpage">
-                        <button style="width:150px;" type="button" name="buy" id="buy" class="btn btn-success">Køb
-                        </button>
-                    </a>
-                </div>
-                <div class="col-md"></div>
+
+            <div align="center" class="align-content-center"> Total pris: ${sessionScope.totalPrice}.-</div>
+            <div align="center" class="align-content-center">
+
+                <a href="${pageContext.request.contextPath}/fc/receiptpage">
+                    <td>
+                        <input type="submit" name="buy" id="buy" value="Køb">
+                    </td>
+                </a>
             </div>
-
-
         </form>
     </jsp:body>
 </t:genericpage>
