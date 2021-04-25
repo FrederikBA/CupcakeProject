@@ -22,18 +22,19 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Ordrer ID</th>
-                <th scope="col">Antal cupcakes</th>
+                <th scope="col">Antal</th>
                 <th scope="col">Bund</th>
                 <th scope="col">Topping</th>
                 <th scope="col">Pris</th>
-                <th scope="col">Tidspunkt</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="orderidbytime" items="${requestScope.printReceipt}">
+            <c:forEach var="cartItem" items="${requestScope.receiptList}">
                 <tr>
-                    <td>${orderidbytime.}</td>
+                    <td>${cartItem.quantity}</td>
+                    <td>${cartItem.bottom}</td>
+                    <td>${cartItem.topping}</td>
+                    <td>${cartItem.price}</td>
 
                     <form method="post">
                         <td>

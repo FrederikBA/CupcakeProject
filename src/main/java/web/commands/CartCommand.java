@@ -37,8 +37,6 @@ public class CartCommand extends CommandUnprotectedPage {
         }
 
 
-        int printReceipt = orderFacade.getOrderIdByTimestamp();
-        session.setAttribute("printReceipt",printReceipt);
 
         double currentBalance = accountBalanceFacade.getBalanceByUserId(userId).getBalance();
         session.setAttribute("currentBalance", currentBalance);
@@ -97,8 +95,15 @@ public class CartCommand extends CommandUnprotectedPage {
             shoppingCart.getCartItems().clear();
             return "receiptpage";
         }
+        //Receipt
+      //  int orderId = orderFacade.getOrderIdByTimestamp();
+        List<CartItem> receiptList = orderFacade.getOrderContentByOrderId(2);
+        request.setAttribute("receiptList",receiptList);
+
+
         session.setAttribute("totalPrice", totalPrice);
         session.setAttribute("cart", shoppingCart);
+
 
         return pageToShow;
     }
