@@ -40,13 +40,12 @@ public class CartCommand extends CommandUnprotectedPage {
         session.setAttribute("currentBalance", currentBalance);
         double newBalance = 0;
 
-        //Add to cart section
         ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
 
         if (shoppingCart == null) {
             shoppingCart = new ShoppingCart();
         }
-        
+
         if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
             int toppingId = Integer.parseInt(request.getParameter("topping"));
             int bottomId = Integer.parseInt(request.getParameter("bottom"));
@@ -57,7 +56,7 @@ public class CartCommand extends CommandUnprotectedPage {
             double price = quantity * (topping.getPrice() + bottom.getPrice());
             shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
             System.out.println(shoppingCart.getCartItems());
-            }
+        }
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
 
 
@@ -75,14 +74,14 @@ public class CartCommand extends CommandUnprotectedPage {
 
         //Buy section
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {
+
             throw new UserException("Du skal være logged in");
+
         } else if (request.getParameter("buy") != null && shoppingCart.getCartItems().size() > 0) {
-            orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
             newBalance = currentBalance - totalPrice;
-
-
-            if (newBalance > 0) {
+            if (newBalance >= 0) {
                 try {
+                    orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
                     accountBalanceFacade.changeBalance(userId, newBalance);
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
