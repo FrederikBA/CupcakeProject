@@ -84,6 +84,12 @@ public class CartCommand extends CommandUnprotectedPage {
                 try {
                     orderFacade.insertIntoOrders(userId, shoppingCart.getCartItems());
                     accountBalanceFacade.changeBalance(userId, newBalance);
+
+                    //Receipt
+                    int orderId = orderFacade.getOrderIdByTimestamp();
+                    List<CartItem> receiptList = orderFacade.getOrderContentByOrderId(orderId);
+                    session.setAttribute("receiptList", receiptList);
+
                 } catch (SQLException throwables) {
                     throwables.printStackTrace();
                 }
@@ -95,10 +101,6 @@ public class CartCommand extends CommandUnprotectedPage {
             return "receiptpage";
         }
 
-        //Receipt
-        int orderId = orderFacade.getOrderIdByTimestamp();
-        List<CartItem> receiptList = orderFacade.getOrderContentByOrderId(orderId);
-        session.setAttribute("receiptList", receiptList);
 
         session.setAttribute("totalPrice", totalPrice);
         session.setAttribute("cart", shoppingCart);

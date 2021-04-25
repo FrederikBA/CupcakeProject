@@ -18,7 +18,7 @@
             <h3>Tak for købet.</h3>
             <h5>Kvittering:</h5>
         </div>
-        <form method="post" action="${pageContext.request.contextPath}/fc/shoppingcart">
+        <form method="post" action="${pageContext.request.contextPath}/fc/receiptpage">
 
             <table class="table">
                 <thead>
@@ -36,7 +36,6 @@
                         <td>${cartItem.bottom}</td>
                         <td>${cartItem.topping}</td>
                         <td>${cartItem.price}</td>
-
                     </tr>
                 </c:forEach>
                 </tbody>

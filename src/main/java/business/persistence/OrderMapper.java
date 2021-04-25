@@ -69,7 +69,7 @@ public class OrderMapper {
     public int getOrderIdByTimestamp() throws UserException {
         int id = 0;
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM orders ORDER BY timestamp;";
+            String sql = "SELECT * FROM orders ORDER BY timestamp DESC";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {

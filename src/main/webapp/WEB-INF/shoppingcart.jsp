@@ -13,7 +13,6 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h3 name="userId" id="userId">User ID: ${sessionScope.user.id}</h3>
         <h3>Your balance: ${sessionScope.currentBalance}</h3>
         <form method="post">
             <table class="table">
@@ -49,9 +48,7 @@
             <div align="center" class="align-content-center">
 
                 <a href="${pageContext.request.contextPath}/fc/receiptpage">
-                    <td>
-                        <input type="submit" name="buy" id="buy" value="Køb">
-                    </td>
+                    <input type="submit" name="buy" id="buy" value="Køb">
                 </a>
             </div>
         </form>
