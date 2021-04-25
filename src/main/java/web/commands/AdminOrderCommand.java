@@ -23,7 +23,6 @@ public class AdminOrderCommand extends CommandProtectedPage {
 
         //Show list of orders
         List<Order> orderList = orderFacade.getAllOrders();
-        request.setAttribute("orderList", orderList);
 
 
         //Show order content from specific order
@@ -46,8 +45,9 @@ public class AdminOrderCommand extends CommandProtectedPage {
             String deleteId = request.getParameter("delete");
             orderFacade.deleteOrderContentByOrderId(Integer.parseInt(deleteId));
             orderFacade.deleteOrder(Integer.parseInt(deleteId));
+            orderList = orderFacade.getAllOrders();
         }
-
+        request.setAttribute("orderList", orderList);
         return pageToShow;
     }
 }

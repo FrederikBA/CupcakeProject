@@ -21,10 +21,9 @@
                 <h4>Vi tilbyder øens bedste cupcakes til øens bedste priser.</h4>
                 <br>
                 <h4>Vælg mellem vores skarpe udvalg af forskellige bunde og toppings
-                    og sammensæt din helt egen cupcake.<h4>
+                    og sammensæt din helt egen cupcake.</h4>
             </div>
         </div>
-        <!--fjern action, men så tilføjer den ikke tingene til kurven. -->
         <form method="post" action="${pageContext.request.contextPath}/fc/addtocart">
             <div class="row">
                 <div class="col-md">
@@ -64,7 +63,8 @@
                 <div class="col-md"></div>
                 <div class="col-md">
                     <div style="text-align:center;">
-                        <button style="width:150px;" class="btn btn-secondary" name="put" type="submit">Læg i kurv</button>
+                        <button style="width:150px;" class="btn btn-secondary" name="put" type="submit">Læg i kurv
+                        </button>
                     </div>
                     <br>
                 </div>

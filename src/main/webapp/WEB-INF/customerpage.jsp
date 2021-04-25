@@ -11,7 +11,7 @@
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        <h4>Du er nu logged ind som ${sessionScope.role}.</h4>
+        <h4>Du er nu logget ind som ${sessionScope.role}.</h4>
         <br>
         <br>
         <br>

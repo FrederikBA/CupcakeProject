@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-        <h3>Her kan admin se kundens ordrer og fjerne den</h3>
+        <h3>Ordreoversigt</h3>
 
         <form method="post">
             <table class="table">

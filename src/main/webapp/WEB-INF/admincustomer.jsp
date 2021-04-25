@@ -46,7 +46,7 @@
                 </tbody>
             </table>
             <br>
-            <div class="row">
+            <div style="text-align:center;" class="row">
 
                 <div class="col-md">
                     <div class="form-group">
