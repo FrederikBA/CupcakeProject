@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -64,7 +64,7 @@
                 <div class="col-md"></div>
                 <div class="col-md">
                     <div style="text-align:center;">
-                        <button class="btn btn-primary" name="put" type="submit">Læg i kurv</button>
+                        <button style="width:150px;" class="btn btn-secondary" name="put" type="submit">Læg i kurv</button>
                     </div>
                     <br>
                 </div>

@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Register as new User
+         Olsker Cupcakes
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>

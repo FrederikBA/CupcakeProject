@@ -46,17 +46,6 @@ public class CartCommand extends CommandUnprotectedPage {
             shoppingCart = new ShoppingCart();
         }
 
-        if (request.getParameter("topping") != null || request.getParameter("bottom") != null) {
-            int toppingId = Integer.parseInt(request.getParameter("topping"));
-            int bottomId = Integer.parseInt(request.getParameter("bottom"));
-            Topping topping = cupcakeFacade.getToppingById(toppingId);
-            Bottom bottom = cupcakeFacade.getBottomById(bottomId);
-
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            double price = quantity * (topping.getPrice() + bottom.getPrice());
-            shoppingCart.addToCart(new CartItem(quantity, bottom, topping, price));
-            System.out.println(shoppingCart.getCartItems());
-        }
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
 
 
@@ -67,10 +56,12 @@ public class CartCommand extends CommandUnprotectedPage {
         }
 
 
+        //Show shopping cart size when cart isn't empty
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
-            session.setAttribute("cartItemSize", shoppingCartSize);
+            request.setAttribute("cartItemSize", shoppingCartSize);
         }
+
 
         //Buy section
         if (session.getAttribute("user") == null && request.getParameter("buy") != null) {

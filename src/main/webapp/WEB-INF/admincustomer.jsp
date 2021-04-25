@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -14,7 +14,7 @@
 
     <jsp:body>
 
-        <h3>Her kan admin se kunder, deres credit og ændre deres credit</h3>
+        <h3>Her kan du se informationer om kunder samt opdatere deres balance</h3>
         <form method="post" action="${pageContext.request.contextPath}/fc/admincustomer">
             <table class="table">
                 <thead>
@@ -46,13 +46,32 @@
                 </tbody>
             </table>
             <br>
-            <div align="center" class="align-content-center">
-                <label for="userId">Bruger ID:</label>
-                <input type="text" id="userId" name="userId">
-                <label for="balance">Balance:</label>
-                <input type="text" id="balance" name="balance">
-                <td><input type="submit" value="Opdater Balance" name="update"></td>
+            <div class="row">
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="userId">Bruger ID:</label>
+                        <input class="form-control" type="text" id="userId" name="userId">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <label for="balance">Balance:</label>
+                        <input class="form-control" type="text" id="balance" name="balance">
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="form-group">
+                        <br>
+                        <button style="width:100%;" type="button" class="btn btn-secondary" name="button">Opdater
+                            Balance
+                        </button>
+                    </div>
+                </div>
             </div>
+            <br>
         </form>
     </jsp:body>
 </t:genericpage>

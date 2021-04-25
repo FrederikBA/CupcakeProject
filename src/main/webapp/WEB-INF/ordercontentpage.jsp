@@ -5,7 +5,7 @@
 <t:genericpage>
 
     <jsp:attribute name="header">
-         Home
+         Olsker Cupcakes
     </jsp:attribute>
 
     <jsp:attribute name="footer">
@@ -36,8 +36,14 @@
                 </c:forEach>
                 </tbody>
             </table>
-
-            <button class="btn btn-primary" type="submit" name="return">Tilbage</button>
+            <div class="row">
+                <div class="col-md"></div>
+                <div class="col-md " style="text-align:center;">
+                    <button style="width:150px;" class="btn btn-secondary" type="submit" name="return">Tilbage</button>
+                </div>
+                <div class="col-md"></div>
+            </div>
         </form>
+        <br>
     </jsp:body>
 </t:genericpage>

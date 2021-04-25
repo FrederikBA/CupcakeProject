@@ -81,12 +81,12 @@ public class AddToCartCommand extends CommandUnprotectedPage {
         double totalPrice = cupcakeFacade.calcTotalPrice(shoppingCart);
         session.setAttribute("totalPrice", totalPrice);
 
-
         //Show shopping cart size when cart isn't empty
         if (shoppingCart.getCartItems().size() >= 1) {
             int shoppingCartSize = shoppingCart.getCartItems().size();
             request.setAttribute("cartItemSize", shoppingCartSize);
         }
+
         return pageToShow;
     }
 }
