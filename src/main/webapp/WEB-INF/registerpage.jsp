@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <input class="btn btn-primary" type="submit" type="submit" value="Submit">
+                <input class="btn btn-primary" type="submit" type="submit" value="Submit" name="register">
             </form>
 
             <c:if test="${requestScope.error != null }">
