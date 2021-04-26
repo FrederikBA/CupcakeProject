@@ -8,6 +8,7 @@ import business.services.OrderFacade;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -20,6 +21,8 @@ public class AdminOrderCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
+        HttpSession session = request.getSession();
+
 
         //Show list of orders
         List<Order> orderList = orderFacade.getAllOrders();
@@ -47,7 +50,7 @@ public class AdminOrderCommand extends CommandProtectedPage {
             orderFacade.deleteOrder(Integer.parseInt(deleteId));
             orderList = orderFacade.getAllOrders();
         }
-        request.setAttribute("orderList", orderList);
+        session.setAttribute("orderList", orderList);
         return pageToShow;
     }
 }
